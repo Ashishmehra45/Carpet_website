@@ -1,0 +1,624 @@
+import React, { useState } from 'react';
+import { 
+  Globe, Package, TrendingUp, Users, Award, Monitor, 
+  CheckCircle, ChevronDown, ChevronUp, MapPin, Phone, 
+  Mail, ArrowRight, ArrowLeft, Star, Briefcase, 
+  Lightbulb, ShoppingBag, Send
+} from 'lucide-react';
+
+const CarpetAccelerator = () => {
+  const [activeStep, setActiveStep] = useState(1);
+  const [activeFaq, setActiveFaq] = useState(null);
+
+  // --- Theme Colors ---
+  // Deep Maroon: #581c24
+  // Golden Brown: #a67c00
+  // Cream/Beige: #fbf9f6 / #f5ebd9
+  // Dark Charcoal: #333333
+
+  const faqs = [
+    { q: "What is Carpet Accelerator?", a: "It is a focused growth program designed to support carpet artisans, weavers, and MSMEs in transforming traditional craft into globally competitive lifestyle brands." },
+    { q: "Who can apply?", a: "Carpet Artisans, Weavers, Manufacturers, Exporters, SHGs, Cooperatives, MSMEs, Emerging Carpet Brands, and Women-led enterprises." },
+    { q: "Is the program free?", a: "Yes, the accelerator program is fully funded for selected participants to support industry growth." },
+    { q: "What support will participants receive?", a: "Mentorship, design training, packaging development, export readiness, digital selling support, and direct buyer connections." },
+    { q: "Will export support be provided?", a: "Absolutely. Export documentation, readiness, and direct buyer-seller meets are core components of Phase 2." },
+    { q: "How many participants will be selected?", a: "The cohort size is strictly limited to 30–50 participants to ensure highly personalized attention and one-on-one mentorship." },
+    { q: "Is prior export experience required?", a: "No, prior export experience is not required. We will train you to become export-ready." }
+  ];
+
+  const handleNextStep = (e) => { e.preventDefault(); setActiveStep(prev => Math.min(prev + 1, 3)); };
+  const handlePrevStep = (e) => { e.preventDefault(); setActiveStep(prev => Math.max(prev - 1, 1)); };
+
+  return (
+    <div className="font-sans text-[#333333] bg-[#fbf9f6] min-h-screen scroll-smooth">
+      
+      {/* 1. Navbar */}
+      <nav className="fixed w-full z-50 bg-white/90 backdrop-blur-md shadow-sm border-b border-gray-100 transition-all">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between h-20 items-center">
+            <div className="flex items-center gap-2">
+              <div className="w-10 h-10 bg-[#581c24] rounded-lg flex items-center justify-center">
+                <Globe className="text-[#a67c00] w-6 h-6" />
+              </div>
+              <span className="font-bold text-2xl tracking-tight text-[#581c24]">Carpet<span className="text-[#a67c00]">Accelerator</span></span>
+            </div>
+            <div className="hidden lg:flex space-x-8 text-sm font-semibold text-[#333333]">
+              <a href="#about" className="hover:text-[#a67c00] transition-colors">About</a>
+              <a href="#benefits" className="hover:text-[#a67c00] transition-colors">Benefits</a>
+              <a href="#program" className="hover:text-[#a67c00] transition-colors">Program</a>
+              <a href="#eligibility" className="hover:text-[#a67c00] transition-colors">Eligibility</a>
+              <a href="#faq" className="hover:text-[#a67c00] transition-colors">FAQ</a>
+            </div>
+            <div className="hidden md:flex items-center space-x-4">
+              <a href="#apply" className="bg-[#581c24] text-white px-6 py-2.5 rounded-md font-medium hover:bg-[#43151b] shadow-lg shadow-maroon/30 transition-all hover:-translate-y-0.5">
+                Apply Now
+              </a>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      {/* 2. Hero Section */}
+      <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-[#581c24]">
+        {/* Abstract Carpet Texture/Pattern Overlay */}
+        <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(#a67c00 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 to-transparent"></div>
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+          <span className="inline-block py-1 px-3 rounded-full bg-[#a67c00]/20 text-[#f5ebd9] border border-[#a67c00]/50 text-sm font-semibold tracking-wider mb-6">
+            GOVERNMENT BACKED EXPORT INITIATIVE
+          </span>
+          <h1 className="text-5xl md:text-7xl font-extrabold text-white tracking-tight mb-4">
+            Carpet Accelerator
+          </h1>
+          <h2 className="text-2xl md:text-3xl font-medium text-[#a67c00] mb-8 tracking-wide uppercase">
+            From Looms to Global Rooms
+          </h2>
+          <p className="max-w-3xl mx-auto text-lg md:text-xl text-[#f5ebd9]/90 mb-10 leading-relaxed">
+            Empowering carpet artisans, weavers, manufacturers, and entrepreneurs to transform traditional carpets into globally competitive lifestyle brands.
+          </p>
+          
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mb-16">
+            <a href="#apply" className="w-full sm:w-auto px-8 py-4 bg-[#a67c00] text-white font-bold rounded-lg hover:bg-[#8e6a00] shadow-xl shadow-[#a67c00]/20 transition-all flex items-center justify-center gap-2 hover:-translate-y-1">
+              Apply Now <ArrowRight className="w-5 h-5" />
+            </a>
+            <a href="#program" className="w-full sm:w-auto px-8 py-4 bg-white/10 text-white font-bold rounded-lg hover:bg-white/20 backdrop-blur-sm border border-white/20 transition-all flex items-center justify-center">
+              Explore Program
+            </a>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+            {[
+              { label: "Applications Close", value: "Jan 12, 2026", icon: <Star className="w-5 h-5 text-[#a67c00]"/> },
+              { label: "Cohort Size", value: "30–50 Participants", icon: <Users className="w-5 h-5 text-[#a67c00]"/> },
+              { label: "Program Duration", value: "3 Months", icon: <Briefcase className="w-5 h-5 text-[#a67c00]"/> }
+            ].map((card, idx) => (
+              <div key={idx} className="bg-white/10 backdrop-blur-md border border-white/10 rounded-xl p-6 text-left flex items-start gap-4">
+                <div className="p-3 bg-white/10 rounded-lg">{card.icon}</div>
+                <div>
+                  <p className="text-[#f5ebd9] text-sm mb-1">{card.label}</p>
+                  <p className="text-white font-bold text-lg">{card.value}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 3. About Section */}
+      <section id="about" className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-[#581c24] mb-6">From Local Weaves to Global Markets</h2>
+          <div className="w-24 h-1 bg-[#a67c00] mx-auto mb-8 rounded-full"></div>
+          <p className="max-w-4xl mx-auto text-lg text-gray-600 leading-relaxed">
+            The Carpet Accelerator is a focused growth program designed to support carpet artisans, weavers, manufacturers, exporters, and emerging entrepreneurs. The program helps participants improve product design, quality, packaging, branding, digital presence, export readiness, and buyer connections.
+          </p>
+        </div>
+      </section>
+
+      {/* 4. Why Join Section */}
+      <section className="py-16 bg-[#fbf9f6]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              { title: "From Looms to Global Markets", icon: <Globe /> },
+              { title: "Design Innovation with Traditional Craft", icon: <Lightbulb /> },
+              { title: "Branding & Packaging Support", icon: <Package /> },
+              { title: "Direct Buyer & Export Connect", icon: <TrendingUp /> }
+            ].map((item, idx) => (
+              <div key={idx} className="group bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 hover:-translate-y-2">
+                <div className="w-14 h-14 bg-[#f5ebd9] rounded-xl flex items-center justify-center text-[#a67c00] mb-6 group-hover:scale-110 group-hover:bg-[#581c24] group-hover:text-white transition-all">
+                  {item.icon}
+                </div>
+                <h3 className="text-xl font-bold text-[#333333] leading-tight">{item.title}</h3>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 5. Benefits Section */}
+      <section id="benefits" className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-[#581c24] mb-4">Program Benefits</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">Comprehensive end-to-end support to elevate your craft.</p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { title: "One-on-One Mentorship", icon: <Users /> },
+              { title: "Product Design & Trends", icon: <Lightbulb /> },
+              { title: "Packaging & Catalogues", icon: <Package /> },
+              { title: "Export Readiness", icon: <Globe /> },
+              { title: "E-commerce & Digital", icon: <Monitor /> },
+              { title: "Buyer-Seller Meet", icon: <Briefcase /> },
+              { title: "Excellence Awards", icon: <Award /> },
+              { title: "End-to-End Support", icon: <CheckCircle /> }
+            ].map((benefit, idx) => (
+              <div key={idx} className="flex items-center gap-4 p-4 rounded-xl border border-gray-100 hover:border-[#a67c00] hover:bg-[#fbf9f6] transition-colors cursor-pointer">
+                <div className="text-[#a67c00]">{benefit.icon}</div>
+                <span className="font-semibold text-gray-800">{benefit.title}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 6. Program Journey Section */}
+      <section id="program" className="py-24 bg-[#581c24] text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Program Journey</h2>
+            <p className="text-[#f5ebd9] max-w-2xl mx-auto">A structured 3-phase timeline to transform your business.</p>
+          </div>
+
+          <div className="space-y-12 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-white/30 before:to-transparent">
+            
+            {/* Phase 1 */}
+            <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+              <div className="flex items-center justify-center w-10 h-10 rounded-full border-4 border-[#581c24] bg-[#a67c00] text-white font-bold shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 relative z-10">1</div>
+              <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-6 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 transition-all">
+                <div className="flex justify-between items-start mb-2">
+                  <h3 className="font-bold text-xl text-[#a67c00]">Cluster Discovery & Selection</h3>
+                  <span className="text-xs font-semibold px-2 py-1 bg-white/10 rounded-md">1 Month</span>
+                </div>
+                <ul className="space-y-2 mt-4 text-[#f5ebd9] text-sm">
+                  <li className="flex gap-2"><CheckCircle className="w-4 h-4 text-[#a67c00]" /> Carpet cluster bootcamps</li>
+                  <li className="flex gap-2"><CheckCircle className="w-4 h-4 text-[#a67c00]" /> Product assessment</li>
+                  <li className="flex gap-2"><CheckCircle className="w-4 h-4 text-[#a67c00]" /> Business potential evaluation</li>
+                  <li className="flex gap-2"><CheckCircle className="w-4 h-4 text-[#a67c00]" /> Selection of 30–50 participants</li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Phase 2 */}
+            <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+              <div className="flex items-center justify-center w-10 h-10 rounded-full border-4 border-[#581c24] bg-[#a67c00] text-white font-bold shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 relative z-10">2</div>
+              <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-6 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 transition-all">
+                <div className="flex justify-between items-start mb-2">
+                  <h3 className="font-bold text-xl text-[#a67c00]">Carpet Brand Acceleration</h3>
+                  <span className="text-xs font-semibold px-2 py-1 bg-white/10 rounded-md">1 Month</span>
+                </div>
+                <ul className="space-y-2 mt-4 text-[#f5ebd9] text-sm grid grid-cols-1 sm:grid-cols-2 gap-x-2">
+                  <li className="flex gap-2"><CheckCircle className="w-4 h-4 text-[#a67c00]" /> Design training</li>
+                  <li className="flex gap-2"><CheckCircle className="w-4 h-4 text-[#a67c00]" /> Quality improvement</li>
+                  <li className="flex gap-2"><CheckCircle className="w-4 h-4 text-[#a67c00]" /> Branding & packaging</li>
+                  <li className="flex gap-2"><CheckCircle className="w-4 h-4 text-[#a67c00]" /> Digital marketing</li>
+                  <li className="flex gap-2"><CheckCircle className="w-4 h-4 text-[#a67c00]" /> Export documentation</li>
+                  <li className="flex gap-2"><CheckCircle className="w-4 h-4 text-[#a67c00]" /> Buyer pitching</li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Phase 3 */}
+            <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+              <div className="flex items-center justify-center w-10 h-10 rounded-full border-4 border-[#581c24] bg-[#a67c00] text-white font-bold shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 relative z-10">3</div>
+              <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-6 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 transition-all">
+                <div className="flex justify-between items-start mb-2">
+                  <h3 className="font-bold text-xl text-[#a67c00]">Carpet Conclave & Awards</h3>
+                  <span className="text-xs font-semibold px-2 py-1 bg-white/10 rounded-md">1 Week</span>
+                </div>
+                <ul className="space-y-2 mt-4 text-[#f5ebd9] text-sm grid grid-cols-1 sm:grid-cols-2 gap-x-2">
+                  <li className="flex gap-2"><CheckCircle className="w-4 h-4 text-[#a67c00]" /> Product exhibition</li>
+                  <li className="flex gap-2"><CheckCircle className="w-4 h-4 text-[#a67c00]" /> Buyer-seller meet</li>
+                  <li className="flex gap-2"><CheckCircle className="w-4 h-4 text-[#a67c00]" /> Investor meetings</li>
+                  <li className="flex gap-2"><CheckCircle className="w-4 h-4 text-[#a67c00]" /> Excellence Awards</li>
+                  <li className="flex gap-2"><CheckCircle className="w-4 h-4 text-[#a67c00]" /> Media showcase</li>
+                  <li className="flex gap-2"><CheckCircle className="w-4 h-4 text-[#a67c00]" /> Market launch</li>
+                </ul>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* 7. Eligibility Section */}
+      <section id="eligibility" className="py-20 bg-[#fbf9f6]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-[#581c24] mb-4">Who Can Apply?</h2>
+            <div className="w-24 h-1 bg-[#a67c00] mx-auto rounded-full"></div>
+          </div>
+          <div className="flex flex-wrap justify-center gap-4">
+            {["Carpet Artisans", "Weavers", "Carpet Manufacturers", "Exporters", "SHGs", "Cooperatives", "MSMEs", "Emerging Carpet Brands", "Women-led enterprises"].map((item, idx) => (
+              <span key={idx} className="bg-white border border-[#a67c00]/30 text-[#581c24] px-6 py-3 rounded-full shadow-sm font-semibold hover:bg-[#a67c00] hover:text-white hover:border-[#a67c00] transition-colors cursor-pointer">
+                {item}
+              </span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 8. Success Stories Section */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl md:text-4xl font-bold text-[#581c24] text-center mb-16">Impact & Success Stories</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            
+            <div className="bg-[#fbf9f6] p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-lg transition-all relative mt-8">
+              <div className="absolute -top-8 left-8 w-16 h-16 bg-[#581c24] rounded-full flex items-center justify-center border-4 border-white">
+                <span className="text-white font-bold text-xl">MK</span>
+              </div>
+              <h3 className="font-bold text-xl text-gray-800 mt-4">Meera Khan</h3>
+              <p className="text-[#a67c00] text-sm font-medium mb-4">Handwoven Carpet Artisan</p>
+              <p className="text-gray-600 italic mb-6">"From selling carpets in local exhibitions to receiving premium hotel orders, the accelerator helped me build a real brand."</p>
+              <div className="pt-4 border-t border-gray-200 flex justify-between text-sm font-bold text-[#581c24]">
+                <span>4x Revenue Growth</span>
+                <span>6 New Buyers</span>
+              </div>
+            </div>
+
+            <div className="bg-[#fbf9f6] p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-lg transition-all relative mt-8">
+              <div className="absolute -top-8 left-8 w-16 h-16 bg-[#581c24] rounded-full flex items-center justify-center border-4 border-white">
+                <span className="text-white font-bold text-xl">RA</span>
+              </div>
+              <h3 className="font-bold text-xl text-gray-800 mt-4">Ramesh Ansari</h3>
+              <p className="text-[#a67c00] text-sm font-medium mb-4">Carpet Weaver</p>
+              <p className="text-gray-600 italic mb-6">"Design training and packaging support helped me make my products ready for modern homes and export markets."</p>
+              <div className="pt-4 border-t border-gray-200 flex justify-between text-sm font-bold text-[#581c24]">
+                <span>300% Order Growth</span>
+                <span>12 Artisans Employed</span>
+              </div>
+            </div>
+
+            <div className="bg-[#fbf9f6] p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-lg transition-all relative mt-8">
+              <div className="absolute -top-8 left-8 w-16 h-16 bg-[#581c24] rounded-full flex items-center justify-center border-4 border-white">
+                <span className="text-white font-bold text-xl">SD</span>
+              </div>
+              <h3 className="font-bold text-xl text-gray-800 mt-4">Sunita Devi</h3>
+              <p className="text-[#a67c00] text-sm font-medium mb-4">Women SHG Leader</p>
+              <p className="text-gray-600 italic mb-6">"Our group learned online selling, product photography, and buyer communication. Now we sell beyond our district."</p>
+              <div className="pt-4 border-t border-gray-200 flex justify-between text-sm font-bold text-[#581c24]">
+                <span>5x Sales Growth</span>
+                <span>20 Women Trained</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* 9. Application Section */}
+      <section id="apply" className="py-24 bg-[#581c24] text-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-5xl font-bold mb-4">Join the Cohort</h2>
+            <p className="text-[#f5ebd9]">Complete the application form to secure your spot in the 2026 Accelerator.</p>
+          </div>
+
+          <div className="bg-white rounded-2xl shadow-2xl overflow-hidden text-gray-800">
+            {/* Step Indicators */}
+            <div className="bg-[#f5ebd9] px-8 py-4 flex justify-between border-b border-gray-200">
+              {[1, 2, 3].map(step => (
+                <div key={step} className="flex items-center gap-2">
+                  <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm transition-colors ${activeStep >= step ? 'bg-[#581c24] text-white' : 'bg-gray-200 text-gray-400'}`}>
+                    {step}
+                  </div>
+                  <span className={`hidden sm:block text-sm font-semibold ${activeStep >= step ? 'text-[#581c24]' : 'text-gray-400'}`}>
+                    {step === 1 ? 'Personal Info' : step === 2 ? 'Business Info' : 'Market & Support'}
+                  </span>
+                </div>
+              ))}
+            </div>
+
+            <form className="p-8 md:p-12">
+              {/* Step 1 */}
+              {activeStep === 1 && (
+                <div className="space-y-6 animate-fade-in">
+                  <h3 className="text-2xl font-bold text-[#581c24] mb-6">Personal Information</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                      <label className="block text-sm font-semibold text-gray-700 mb-2">Full Name</label>
+                      <input type="text" className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#a67c00] focus:border-transparent outline-none transition-all" placeholder="Enter full name" />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-semibold text-gray-700 mb-2">Mobile Number</label>
+                      <input type="tel" className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#a67c00] focus:border-transparent outline-none transition-all" placeholder="+91" />
+                    </div>
+                    <div className="md:col-span-2">
+                      <label className="block text-sm font-semibold text-gray-700 mb-2">Email Address</label>
+                      <input type="email" className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#a67c00] focus:border-transparent outline-none transition-all" placeholder="your@email.com" />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-semibold text-gray-700 mb-2">District</label>
+                      <input type="text" className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#a67c00] focus:border-transparent outline-none transition-all" placeholder="e.g. Bhadohi" />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-semibold text-gray-700 mb-2">Village / City</label>
+                      <input type="text" className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#a67c00] focus:border-transparent outline-none transition-all" placeholder="City name" />
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* Step 2 */}
+              {activeStep === 2 && (
+                <div className="space-y-6 animate-fade-in">
+                  <h3 className="text-2xl font-bold text-[#581c24] mb-6">Business Information</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="md:col-span-2">
+                      <label className="block text-sm font-semibold text-gray-700 mb-2">Business/Unit Name</label>
+                      <input type="text" className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#a67c00] focus:border-transparent outline-none transition-all" placeholder="Enter business name" />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-semibold text-gray-700 mb-2">Business Type</label>
+                      <select className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#a67c00] focus:border-transparent outline-none bg-white">
+                        <option value="">Select Type</option>
+                        {["Weaver", "Artisan", "Manufacturer", "Exporter", "SHG", "Cooperative", "MSME", "Startup"].map(opt => <option key={opt} value={opt}>{opt}</option>)}
+                      </select>
+                    </div>
+                    <div>
+                      <label className="block text-sm font-semibold text-gray-700 mb-2">Carpet Type</label>
+                      <select className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#a67c00] focus:border-transparent outline-none bg-white">
+                        <option value="">Select Carpet Type</option>
+                        {["Hand-knotted", "Hand-tufted", "Flatweave", "Wool Carpet", "Cotton Dhurrie", "Silk Carpet", "Jute Carpet", "Custom Rugs"].map(opt => <option key={opt} value={opt}>{opt}</option>)}
+                      </select>
+                    </div>
+                    <div>
+                      <label className="block text-sm font-semibold text-gray-700 mb-2">Years of Experience</label>
+                      <input type="number" className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#a67c00] focus:border-transparent outline-none" placeholder="Years" />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-semibold text-gray-700 mb-2">Number of Workers</label>
+                      <input type="number" className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#a67c00] focus:border-transparent outline-none" placeholder="e.g. 15" />
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* Step 3 */}
+              {activeStep === 3 && (
+                <div className="space-y-6 animate-fade-in">
+                  <h3 className="text-2xl font-bold text-[#581c24] mb-6">Market & Support</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                      <label className="block text-sm font-semibold text-gray-700 mb-2">Current Sales Channel</label>
+                      <select className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#a67c00] focus:border-transparent outline-none bg-white">
+                        <option value="">Select Channel</option>
+                        {["Local Market", "Exhibition", "Retailers", "Exporters", "Online Marketplace", "Social Media"].map(opt => <option key={opt} value={opt}>{opt}</option>)}
+                      </select>
+                    </div>
+                    <div>
+                      <label className="block text-sm font-semibold text-gray-700 mb-2">Monthly Production Capacity</label>
+                      <input type="text" className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#a67c00] outline-none" placeholder="e.g. 500 sq ft" />
+                    </div>
+                    <div className="md:col-span-2">
+                      <label className="block text-sm font-semibold text-gray-700 mb-2">Monthly Revenue Range</label>
+                      <input type="text" className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#a67c00] outline-none" placeholder="e.g. INR 50,000 - 1 Lakh" />
+                    </div>
+                    <div className="md:col-span-2">
+                      <label className="block text-sm font-semibold text-gray-700 mb-3">Support Needed (Select multiple)</label>
+                      <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                        {["Branding", "Design", "Packaging", "Export", "Finance", "E-commerce", "Buyer Connection", "Certification"].map(opt => (
+                          <label key={opt} className="flex items-center gap-2 text-sm cursor-pointer hover:bg-gray-50 p-2 rounded border border-transparent hover:border-gray-200 transition-colors">
+                            <input type="checkbox" className="w-4 h-4 text-[#581c24] focus:ring-[#a67c00] rounded" />
+                            {opt}
+                          </label>
+                        ))}
+                      </div>
+                    </div>
+                    <div className="md:col-span-2">
+                      <label className="block text-sm font-semibold text-gray-700 mb-2">Why do you want to join?</label>
+                      <textarea rows="3" className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#a67c00] focus:border-transparent outline-none resize-none" placeholder="Tell us about your goals..."></textarea>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* Form Navigation Controls */}
+              <div className="mt-10 flex justify-between pt-6 border-t border-gray-100">
+                <button 
+                  onClick={handlePrevStep} 
+                  disabled={activeStep === 1}
+                  className={`flex items-center gap-2 px-6 py-3 font-semibold rounded-lg transition-all ${activeStep === 1 ? 'opacity-0 pointer-events-none' : 'text-[#581c24] bg-rose-50 hover:bg-rose-100'}`}
+                >
+                  <ArrowLeft className="w-4 h-4" /> Back
+                </button>
+                
+                {activeStep < 3 ? (
+                  <button onClick={handleNextStep} className="flex items-center gap-2 px-8 py-3 font-semibold rounded-lg text-white bg-[#581c24] hover:bg-[#43151b] shadow-md transition-all">
+                    Next <ArrowRight className="w-4 h-4" />
+                  </button>
+                ) : (
+                  <button onClick={(e) => { e.preventDefault(); alert("Application Form Submitted Successfully! (Frontend Demo)"); }} className="flex items-center gap-2 px-8 py-3 font-semibold rounded-lg text-white bg-[#a67c00] hover:bg-[#8e6a00] shadow-md transition-all">
+                    Submit Application <Send className="w-4 h-4" />
+                  </button>
+                )}
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      {/* 10. FAQ Section */}
+      <section id="faq" className="py-20 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-[#581c24] mb-4">Frequently Asked Questions</h2>
+          </div>
+          <div className="space-y-4">
+            {faqs.map((faq, idx) => (
+              <div key={idx} className="border border-gray-200 rounded-xl overflow-hidden transition-all duration-300 bg-white hover:shadow-md">
+                <button 
+                  className="w-full flex justify-between items-center p-6 text-left focus:outline-none"
+                  onClick={() => setActiveFaq(activeFaq === idx ? null : idx)}
+                >
+                  <span className="font-bold text-gray-800 text-lg">{faq.q}</span>
+                  {activeFaq === idx ? <ChevronUp className="text-[#a67c00]" /> : <ChevronDown className="text-gray-400" />}
+                </button>
+                <div className={`px-6 pb-6 text-gray-600 transition-all duration-300 ${activeFaq === idx ? 'block' : 'hidden'}`}>
+                  {faq.a}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 11. Contact Section */}
+      <section className="py-20 bg-[#fbf9f6]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            
+            {/* Contact Info */}
+            <div>
+              <h2 className="text-3xl font-bold text-[#581c24] mb-6">Get in Touch</h2>
+              <p className="text-gray-600 mb-10">Have questions about the program? Reach out to our support team.</p>
+              
+              <div className="space-y-6">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-sm text-[#a67c00] shrink-0">
+                    <MapPin />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-gray-800">Address</h4>
+                    <p className="text-gray-600 mt-1">Carpet Accelerator Office,<br/>Bhopal, Madhya Pradesh</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-sm text-[#a67c00] shrink-0">
+                    <Phone />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-gray-800">Phone</h4>
+                    <p className="text-gray-600 mt-1">0755-2577145</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-sm text-[#a67c00] shrink-0">
+                    <Mail />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-gray-800">Email</h4>
+                    <p className="text-gray-600 mt-1">support@carpetaccelerator.in</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Contact Form */}
+            <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100">
+              <form className="space-y-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">Name</label>
+                    <input type="text" className="w-full px-4 py-3 rounded-lg bg-gray-50 border-transparent focus:bg-white focus:ring-2 focus:ring-[#a67c00] focus:border-transparent outline-none transition-all" placeholder="Your Name" />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">Email</label>
+                    <input type="email" className="w-full px-4 py-3 rounded-lg bg-gray-50 border-transparent focus:bg-white focus:ring-2 focus:ring-[#a67c00] focus:border-transparent outline-none transition-all" placeholder="your@email.com" />
+                  </div>
+                </div>
+                <div>
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">Subject</label>
+                  <input type="text" className="w-full px-4 py-3 rounded-lg bg-gray-50 border-transparent focus:bg-white focus:ring-2 focus:ring-[#a67c00] focus:border-transparent outline-none transition-all" placeholder="How can we help?" />
+                </div>
+                <div>
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">Message</label>
+                  <textarea rows="4" className="w-full px-4 py-3 rounded-lg bg-gray-50 border-transparent focus:bg-white focus:ring-2 focus:ring-[#a67c00] focus:border-transparent outline-none transition-all resize-none" placeholder="Your message here..."></textarea>
+                </div>
+                <button type="button" className="w-full bg-[#581c24] text-white font-bold py-4 rounded-lg hover:bg-[#43151b] transition-colors shadow-md">
+                  Send Message
+                </button>
+              </form>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* 12. Footer */}
+      <footer className="bg-[#1a1a1a] text-white pt-16 pb-8 border-t-4 border-[#a67c00]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+            
+            <div className="md:col-span-1">
+              <div className="flex items-center gap-2 mb-6">
+                <Globe className="text-[#a67c00] w-6 h-6" />
+                <span className="font-bold text-xl tracking-tight text-white">Carpet<span className="text-[#a67c00]">Accelerator</span></span>
+              </div>
+              <p className="text-gray-400 text-sm leading-relaxed">
+                Empowering carpet makers to move from local looms to global rooms.
+              </p>
+            </div>
+
+            <div>
+              <h4 className="font-bold text-lg mb-6 text-white">Quick Links</h4>
+              <ul className="space-y-3 text-sm text-gray-400">
+                <li><a href="#about" className="hover:text-[#a67c00] transition-colors">About Program</a></li>
+                <li><a href="#benefits" className="hover:text-[#a67c00] transition-colors">Benefits</a></li>
+                <li><a href="#eligibility" className="hover:text-[#a67c00] transition-colors">Eligibility Criteria</a></li>
+                <li><a href="#apply" className="hover:text-[#a67c00] transition-colors">Apply Now</a></li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="font-bold text-lg mb-6 text-white">Contact Info</h4>
+              <ul className="space-y-3 text-sm text-gray-400">
+                <li className="flex items-center gap-2"><MapPin className="w-4 h-4 text-[#a67c00]" /> Bhopal, MP</li>
+                <li className="flex items-center gap-2"><Phone className="w-4 h-4 text-[#a67c00]" /> 0755-2577145</li>
+                <li className="flex items-center gap-2"><Mail className="w-4 h-4 text-[#a67c00]" /> support@carpetaccelerator.in</li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="font-bold text-lg mb-6 text-white">Newsletter</h4>
+              <p className="text-sm text-gray-400 mb-4">Subscribe for updates on future cohorts.</p>
+              <div className="flex bg-white/10 rounded-lg p-1 border border-white/20">
+                <input type="email" placeholder="Email address" className="bg-transparent w-full px-3 py-2 text-sm text-white outline-none" />
+                <button className="bg-[#a67c00] text-white px-4 py-2 rounded-md text-sm font-bold hover:bg-[#8e6a00] transition-colors">
+                  Join
+                </button>
+              </div>
+            </div>
+
+          </div>
+          
+          <div className="pt-8 border-t border-white/10 text-center flex flex-col md:flex-row justify-between items-center gap-4">
+            <p className="text-gray-500 text-sm">© 2026 Carpet Accelerator. All rights reserved.</p>
+            <div className="flex gap-4 text-sm text-gray-500">
+              <span className="hover:text-white cursor-pointer transition-colors">Privacy Policy</span>
+              <span className="hover:text-white cursor-pointer transition-colors">Terms of Service</span>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+      {/* Global Styles Addition for smooth scrolling & animations */}
+      <style dangerouslySetInnerHTML={{__html: `
+        html { scroll-behavior: smooth; }
+        .animate-fade-in { animation: fadeIn 0.4s ease-out forwards; }
+        @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(10px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+      `}} />
+    </div>
+  );
+};
+
+export default CarpetAccelerator;
