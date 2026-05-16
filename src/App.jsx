@@ -3,12 +3,15 @@ import {
   Globe, Package, TrendingUp, Users, Award, Monitor, 
   CheckCircle, ChevronDown, ChevronUp, MapPin, Phone, 
   Mail, ArrowRight, ArrowLeft, Star, Briefcase, 
-  Lightbulb, ShoppingBag, Send
+  Lightbulb, ShoppingBag, Send, Menu, X 
 } from 'lucide-react';
 
 const CarpetAccelerator = () => {
   const [activeStep, setActiveStep] = useState(1);
   const [activeFaq, setActiveFaq] = useState(null);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); // Ye new state hai
+
+  
 
   // --- Theme Colors ---
   // Deep Maroon: #581c24
@@ -32,16 +35,20 @@ const CarpetAccelerator = () => {
   return (
     <div className="font-sans text-[#333333] bg-[#fbf9f6] min-h-screen scroll-smooth">
       
-      {/* 1. Navbar */}
+     {/* 1. Navbar */}
       <nav className="fixed w-full z-50 bg-white/90 backdrop-blur-md shadow-sm border-b border-gray-100 transition-all">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-20 items-center">
+            
+            {/* Logo */}
             <div className="flex items-center gap-2">
               <div className="w-10 h-10 bg-[#581c24] rounded-lg flex items-center justify-center">
                 <Globe className="text-[#a67c00] w-6 h-6" />
               </div>
               <span className="font-bold text-2xl tracking-tight text-[#581c24]">Carpet<span className="text-[#a67c00]">Accelerator</span></span>
             </div>
+
+            {/* Desktop Navigation */}
             <div className="hidden lg:flex space-x-8 text-sm font-semibold text-[#333333]">
               <a href="#about" className="hover:text-[#a67c00] transition-colors">About</a>
               <a href="#benefits" className="hover:text-[#a67c00] transition-colors">Benefits</a>
@@ -49,54 +56,90 @@ const CarpetAccelerator = () => {
               <a href="#eligibility" className="hover:text-[#a67c00] transition-colors">Eligibility</a>
               <a href="#faq" className="hover:text-[#a67c00] transition-colors">FAQ</a>
             </div>
-            <div className="hidden md:flex items-center space-x-4">
+
+            {/* Desktop Apply Button */}
+            <div className="hidden lg:flex items-center space-x-4">
               <a href="#apply" className="bg-[#581c24] text-white px-6 py-2.5 rounded-md font-medium hover:bg-[#43151b] shadow-lg shadow-maroon/30 transition-all hover:-translate-y-0.5">
                 Apply Now
               </a>
             </div>
+
+            {/* Mobile Hamburger Button */}
+            <div className="lg:hidden flex items-center">
+              <button 
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} 
+                className="text-[#581c24] hover:text-[#a67c00] focus:outline-none transition-colors"
+              >
+                {isMobileMenuOpen ? <X className="w-8 h-8" /> : <Menu className="w-8 h-8" />}
+              </button>
+            </div>
+
           </div>
         </div>
+
+        {/* Mobile Dropdown Menu */}
+        {isMobileMenuOpen && (
+          <div className="lg:hidden bg-white border-t border-gray-100 shadow-xl absolute w-full animate-fade-in">
+            <div className="px-4 pt-4 pb-6 space-y-4 flex flex-col">
+              <a href="#about" onClick={() => setIsMobileMenuOpen(false)} className="text-lg font-semibold text-[#333333] hover:text-[#a67c00]">About</a>
+              <a href="#benefits" onClick={() => setIsMobileMenuOpen(false)} className="text-lg font-semibold text-[#333333] hover:text-[#a67c00]">Benefits</a>
+              <a href="#program" onClick={() => setIsMobileMenuOpen(false)} className="text-lg font-semibold text-[#333333] hover:text-[#a67c00]">Program</a>
+              <a href="#eligibility" onClick={() => setIsMobileMenuOpen(false)} className="text-lg font-semibold text-[#333333] hover:text-[#a67c00]">Eligibility</a>
+              <a href="#faq" onClick={() => setIsMobileMenuOpen(false)} className="text-lg font-semibold text-[#333333] hover:text-[#a67c00]">FAQ</a>
+              <div className="pt-4 mt-2 border-t border-gray-100">
+                <a href="#apply" onClick={() => setIsMobileMenuOpen(false)} className="block w-full text-center bg-[#581c24] text-white px-6 py-3 rounded-md font-bold shadow-md hover:bg-[#43151b]">
+                  Apply Now
+                </a>
+              </div>
+            </div>
+          </div>
+        )}
       </nav>
 
       {/* 2. Hero Section */}
-      <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-[#581c24]">
-        {/* Abstract Carpet Texture/Pattern Overlay */}
-        <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(#a67c00 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 to-transparent"></div>
+      <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-black">
+       {/* Rich Traditional Rug Texture */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center " 
+          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1600166898405-da9535204843?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')" }}
+        ></div>
+        
+        {/* Elegant Gradient Overlay for Text Readability - Dark edges, clear center */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-[#581c24]/50 to-[#581c24]/90"></div>
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-          <span className="inline-block py-1 px-3 rounded-full bg-[#a67c00]/20 text-[#f5ebd9] border border-[#a67c00]/50 text-sm font-semibold tracking-wider mb-6">
+          <span className="inline-block py-1 px-3 rounded-full bg-[#a67c00]/30 text-[#f5ebd9] border border-[#a67c00]/60 text-sm font-semibold tracking-wider mb-6 backdrop-blur-sm shadow-lg">
             GOVERNMENT BACKED EXPORT INITIATIVE
           </span>
-          <h1 className="text-5xl md:text-7xl font-extrabold text-white tracking-tight mb-4">
+          <h1 className="text-5xl md:text-7xl font-extrabold text-white tracking-tight mb-4 drop-shadow-xl">
             Carpet Accelerator
           </h1>
-          <h2 className="text-2xl md:text-3xl font-medium text-[#a67c00] mb-8 tracking-wide uppercase">
+          <h2 className="text-2xl md:text-3xl font-medium text-[#f5ebd9] mb-8 tracking-wide uppercase drop-shadow-lg">
             From Looms to Global Rooms
           </h2>
-          <p className="max-w-3xl mx-auto text-lg md:text-xl text-[#f5ebd9]/90 mb-10 leading-relaxed">
+          <p className="max-w-3xl mx-auto text-lg md:text-xl text-white/95 mb-10 leading-relaxed font-medium drop-shadow-lg">
             Empowering carpet artisans, weavers, manufacturers, and entrepreneurs to transform traditional carpets into globally competitive lifestyle brands.
           </p>
           
           <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mb-16">
-            <a href="#apply" className="w-full sm:w-auto px-8 py-4 bg-[#a67c00] text-white font-bold rounded-lg hover:bg-[#8e6a00] shadow-xl shadow-[#a67c00]/20 transition-all flex items-center justify-center gap-2 hover:-translate-y-1">
+            <a href="#apply" className="w-full sm:w-auto px-8 py-4 bg-[#a67c00] text-white font-bold rounded-lg hover:bg-[#8e6a00] shadow-xl shadow-[#a67c00]/40 transition-all flex items-center justify-center gap-2 hover:-translate-y-1 border border-[#a67c00]/50">
               Apply Now <ArrowRight className="w-5 h-5" />
             </a>
-            <a href="#program" className="w-full sm:w-auto px-8 py-4 bg-white/10 text-white font-bold rounded-lg hover:bg-white/20 backdrop-blur-sm border border-white/20 transition-all flex items-center justify-center">
+            <a href="#program" className="w-full sm:w-auto px-8 py-4 bg-black/40 text-white font-bold rounded-lg hover:bg-black/60 backdrop-blur-md border border-white/30 transition-all flex items-center justify-center">
               Explore Program
             </a>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
             {[
-              { label: "Applications Close", value: "Jan 12, 2026", icon: <Star className="w-5 h-5 text-[#a67c00]"/> },
-              { label: "Cohort Size", value: "30–50 Participants", icon: <Users className="w-5 h-5 text-[#a67c00]"/> },
-              { label: "Program Duration", value: "3 Months", icon: <Briefcase className="w-5 h-5 text-[#a67c00]"/> }
+              { label: "Applications Close", value: "Jan 12, 2026", icon: <Star className="w-5 h-5 text-[#f5ebd9]"/> },
+              { label: "Cohort Size", value: "30–50 Participants", icon: <Users className="w-5 h-5 text-[#f5ebd9]"/> },
+              { label: "Program Duration", value: "3 Months", icon: <Briefcase className="w-5 h-5 text-[#f5ebd9]"/> }
             ].map((card, idx) => (
-              <div key={idx} className="bg-white/10 backdrop-blur-md border border-white/10 rounded-xl p-6 text-left flex items-start gap-4">
-                <div className="p-3 bg-white/10 rounded-lg">{card.icon}</div>
+              <div key={idx} className="bg-black/40 backdrop-blur-md border border-white/20 rounded-xl p-6 text-left flex items-start gap-4 shadow-xl hover:bg-black/50 transition-colors">
+                <div className="p-3 bg-[#a67c00]/80 rounded-lg">{card.icon}</div>
                 <div>
-                  <p className="text-[#f5ebd9] text-sm mb-1">{card.label}</p>
+                  <p className="text-[#f5ebd9]/80 text-sm mb-1 font-medium">{card.label}</p>
                   <p className="text-white font-bold text-lg">{card.value}</p>
                 </div>
               </div>
