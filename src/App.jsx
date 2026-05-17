@@ -109,7 +109,7 @@ const CarpetAccelerator = () => {
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
           <span className="inline-block py-1 px-3 rounded-full bg-[#a67c00]/30 text-[#f5ebd9] border border-[#a67c00]/60 text-sm font-semibold tracking-wider mb-6 backdrop-blur-sm shadow-lg">
-            GOVERNMENT BACKED EXPORT INITIATIVE
+           Initiative of MP Industrial Development corporation
           </span>
           <h1 className="text-5xl md:text-7xl font-extrabold text-white tracking-tight mb-4 drop-shadow-xl">
             Carpet Accelerator
