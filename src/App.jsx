@@ -5,6 +5,7 @@ import {
   Mail, ArrowRight, ArrowLeft, Star, Briefcase, 
   Lightbulb, ShoppingBag, Send, Menu, X 
 } from 'lucide-react';
+import logo from '/MPIDCUPDATEDLOGO.png'
 
 const CarpetAccelerator = () => {
   const [activeStep, setActiveStep] = useState(1);
@@ -40,12 +41,17 @@ const CarpetAccelerator = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-20 items-center">
             
-            {/* Logo */}
-            <div className="flex items-center gap-2">
-              <div className="w-10 h-10 bg-[#581c24] rounded-lg flex items-center justify-center">
-                <Globe className="text-[#a67c00] w-6 h-6" />
-              </div>
-              <span className="font-bold text-2xl tracking-tight text-[#581c24]">Carpet<span className="text-[#a67c00]">Accelerator</span></span>
+           {/* Logo Section */}
+            <div className="flex items-center gap-3 md:gap-4">
+              {/* MPIDC Logo */}
+              <img 
+                src={logo} 
+                alt="MPIDC Logo" 
+                className="w-auto h-10 md:h-12 object-contain shrink-0" 
+              />
+             
+              
+              
             </div>
 
             {/* Desktop Navigation */}
