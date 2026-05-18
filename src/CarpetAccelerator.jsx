@@ -1387,10 +1387,7 @@ const CarpetAccelerator = () => {
                 <li className="flex items-center gap-2">
                   <Phone className="w-4 h-4 text-[#a67c00]" /> 0755-2577145
                 </li>
-                <li className="flex items-center gap-2">
-                  <Mail className="w-4 h-4 text-[#a67c00]" />{" "}
-                  support@carpetaccelerator.in
-                </li>
+               
               </ul>
             </div>
 
