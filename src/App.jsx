@@ -135,7 +135,7 @@ const CarpetAccelerator = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
             {[
-              { label: "Applications Close", value: "Jan 12, 2026", icon: <Star className="w-5 h-5 text-[#f5ebd9]"/> },
+              { label: "Applications Close", value: "May 22, 2026", icon: <Star className="w-5 h-5 text-[#f5ebd9]"/> },
               { label: "Cohort Size", value: "30–50 Participants", icon: <Users className="w-5 h-5 text-[#f5ebd9]"/> },
               { label: "Program Duration", value: "3 Months", icon: <Briefcase className="w-5 h-5 text-[#f5ebd9]"/> }
             ].map((card, idx) => (
