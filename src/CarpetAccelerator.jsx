@@ -638,7 +638,7 @@ const CarpetAccelerator = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-5xl font-bold mb-4">
-              Join the Cohort
+              Join the Accelerator Program
             </h2>
             <p className="text-[#f5ebd9]">
               Complete the application form to secure your spot in the 2026
