@@ -62,7 +62,7 @@ const submitApplication = async (e) => {
       });
 
       // API Call using Axios
-      const response = await apiClient.post('/applications', data, {
+      const response = await axios.post(`${API_URL}/applications`, data, {
         headers: { 'Content-Type': 'multipart/form-data' }
       });
 
