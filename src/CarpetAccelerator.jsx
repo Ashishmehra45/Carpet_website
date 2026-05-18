@@ -564,7 +564,7 @@ const CarpetAccelerator = () => {
                     Carpet Conclave & Awards
                   </h3>
                   <span className="text-xs font-semibold px-2 py-1 bg-white/10 rounded-md">
-                    1 Week
+                    1 month
                   </span>
                 </div>
                 <ul className="space-y-2 mt-4 text-[#f5ebd9] text-sm grid grid-cols-1 sm:grid-cols-2 gap-x-2">
