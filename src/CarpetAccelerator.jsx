@@ -29,13 +29,10 @@ import axios from "axios";
 
 const CarpetAccelerator = () => {
   const [activeStep, setActiveStep] = useState(1);
- 
   const [isSubmitting, setIsSubmitting] = useState(false);
-
-  // YEH STATE MISSING THI JISKI WAJAH SE CRASH HO RAHA THA 👇
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  // Form Data States
+  // Accelerator Form Data States
   const [formData, setFormData] = useState({
     ownerName: "",
     mobileNo: "",
@@ -64,9 +61,20 @@ const CarpetAccelerator = () => {
     otherDocs: null,
   });
 
-  // Handlers
+  // Contact Form States
+  const [contactData, setContactData] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    number: "",
+    message: "",
+  });
+  const [contactLoading, setContactLoading] = useState(false);
+
+  // Handlers for Accelerator Form
   const handleInputChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
+
   const handleFileChange = (e, field) =>
     setFiles({ ...files, [field]: e.target.files[0] });
 
@@ -80,12 +88,17 @@ const CarpetAccelerator = () => {
     e.preventDefault();
     setActiveStep((prev) => Math.min(prev + 1, 3));
   };
+
+  const handleContactChange = (e) => {
+    setContactData({ ...contactData, [e.target.name]: e.target.value });
+  };
+
   const handlePrevStep = (e) => {
     e.preventDefault();
     setActiveStep((prev) => Math.max(prev - 1, 1));
   };
 
-  // BACKEND API CONNECTION
+  // BACKEND API CONNECTION FOR ACCELERATOR
   const submitApplication = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -101,27 +114,22 @@ const CarpetAccelerator = () => {
         if (files[key]) data.append(key, files[key]);
       });
 
-      // API Call using Axios
       const response = await axios.post(`${API_URL}/applications`, data, {
         headers: { "Content-Type": "multipart/form-data" },
       });
 
       if (response.status === 201 || response.status === 200) {
         toast.success("Registration Successful!", { id: toastId });
-
-        // 1. Step change karo
         setActiveStep(4);
 
-        // 2. DOM update hone ka wait karo aur phir scroll karo
         setTimeout(() => {
           const element = document.getElementById("success-section");
           if (element) {
             element.scrollIntoView({ behavior: "smooth", block: "center" });
           }
-        }, 300); // Thoda time 300ms kar do taaki component render ho jaye
+        }, 300);
       }
     } catch (error) {
-      // Axios error ko handle karne ka sahi tarika
       const errMsg =
         error.response?.data?.message || "Submission failed. Check backend.";
       toast.error(errMsg, { id: toastId });
@@ -131,6 +139,35 @@ const CarpetAccelerator = () => {
     }
   };
 
+  // BACKEND API CONNECTION FOR CONTACT FORM
+  const handleContactSubmit = async (e) => {
+    e.preventDefault();
+    setContactLoading(true);
+    const toastId = toast.loading("Sending your query...");
+
+    try {
+      // 🔴 CHECK HERE: 'contactData' hi pass hona chahiye, 'formData' nahi!
+      const res = await axios.post(`${API_URL}/contact`, contactData);
+
+      if (res.data.success) {
+        toast.success(res.data.message || "Query sent successfully!", {
+          id: toastId,
+        });
+        setContactData({
+          name: "",
+          email: "",
+          subject: "",
+          number: "",
+          message: "",
+        });
+      }
+    } catch (error) {
+      const errMsg = error.response?.data?.message || "Something went wrong.";
+      toast.error(errMsg, { id: toastId });
+    } finally {
+      setContactLoading(false);
+    }
+  };
 
   return (
     <div className="font-sans text-[#333333] bg-[#fbf9f6] min-h-screen scroll-smooth">
@@ -594,8 +631,6 @@ const CarpetAccelerator = () => {
           </div>
         </div>
       </section>
-
-  
 
       {/* 9. Application Section */}
       <section id="apply" className="py-24 bg-[#581c24] text-white">
@@ -1142,8 +1177,6 @@ const CarpetAccelerator = () => {
         </div>
       </section>
 
-    
-
       {/* 11. Contact Section */}
       <section className="py-20 bg-[#fbf9f6]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -1151,7 +1184,7 @@ const CarpetAccelerator = () => {
             {/* Contact Info */}
             <div>
               <h2 className="text-3xl font-bold text-[#581c24] mb-6">
-                Contact Us 
+                Contact Us
               </h2>
               <p className="text-gray-600 mb-10">
                 Have questions about the program? Reach out to our support team.
@@ -1210,8 +1243,12 @@ const CarpetAccelerator = () => {
                     </label>
                     <input
                       type="text"
+                      name="name" /* YEH ADD KIYA */
+                      value={contactData.name} /* YEH ADD KIYA */
+                      onChange={handleContactChange} /* YEH ADD KIYA */
                       className="w-full px-4 py-3 rounded-lg bg-gray-50 border-transparent focus:bg-white focus:ring-2 focus:ring-[#a67c00] focus:border-transparent outline-none transition-all"
                       placeholder="Your Name"
+                      required
                     />
                   </div>
                   <div>
@@ -1220,8 +1257,12 @@ const CarpetAccelerator = () => {
                     </label>
                     <input
                       type="email"
+                      name="email" /* YEH ADD KIYA */
+                      value={contactData.email} /* YEH ADD KIYA */
+                      onChange={handleContactChange} /* YEH ADD KIYA */
                       className="w-full px-4 py-3 rounded-lg bg-gray-50 border-transparent focus:bg-white focus:ring-2 focus:ring-[#a67c00] focus:border-transparent outline-none transition-all"
                       placeholder="your@email.com"
+                      required
                     />
                   </div>
                 </div>
@@ -1231,16 +1272,23 @@ const CarpetAccelerator = () => {
                   </label>
                   <input
                     type="text"
+                    name="subject" /* YEH ADD KIYA */
+                    value={contactData.subject} /* YEH ADD KIYA */
+                    onChange={handleContactChange} /* YEH ADD KIYA */
                     className="w-full px-4 py-3 rounded-lg bg-gray-50 border-transparent focus:bg-white focus:ring-2 focus:ring-[#a67c00] focus:border-transparent outline-none transition-all"
                     placeholder="How can we help?"
+                    required
                   />
                 </div>
-                 <div>
+                <div>
                   <label className="block text-sm font-semibold text-gray-700 mb-2">
                     Number
                   </label>
                   <input
                     type="text"
+                    name="number" /* YEH ADD KIYA */
+                    value={contactData.number} /* YEH ADD KIYA */
+                    onChange={handleContactChange} /* YEH ADD KIYA */
                     className="w-full px-4 py-3 rounded-lg bg-gray-50 border-transparent focus:bg-white focus:ring-2 focus:ring-[#a67c00] focus:border-transparent outline-none transition-all"
                     placeholder="Your phone number"
                   />
@@ -1251,15 +1299,21 @@ const CarpetAccelerator = () => {
                   </label>
                   <textarea
                     rows="4"
+                    name="message" /* YEH ADD KIYA */
+                    value={contactData.message} /* YEH ADD KIYA */
+                    onChange={handleContactChange} /* YEH ADD KIYA */
                     className="w-full px-4 py-3 rounded-lg bg-gray-50 border-transparent focus:bg-white focus:ring-2 focus:ring-[#a67c00] focus:border-transparent outline-none transition-all resize-none"
                     placeholder="Your message here..."
+                    required
                   ></textarea>
                 </div>
                 <button
                   type="button"
-                  className="w-full bg-[#581c24] text-white font-bold py-4 rounded-lg hover:bg-[#43151b] transition-colors shadow-md"
+                  onClick={handleContactSubmit}
+                  disabled={contactLoading}
+                  className="w-full bg-[#581c24] text-white font-bold py-4 rounded-lg hover:bg-[#43151b] transition-colors shadow-md disabled:opacity-50 flex justify-center"
                 >
-                  Send Query
+                  {contactLoading ? "Sending..." : "Send Query"}
                 </button>
               </form>
             </div>
