@@ -29,7 +29,7 @@ import axios from "axios";
 
 const CarpetAccelerator = () => {
   const [activeStep, setActiveStep] = useState(1);
-  const [activeFaq, setActiveFaq] = useState(null);
+ 
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   // YEH STATE MISSING THI JISKI WAJAH SE CRASH HO RAHA THA 👇
@@ -131,42 +131,6 @@ const CarpetAccelerator = () => {
     }
   };
 
-  // --- Theme Colors ---
-  // Deep Maroon: #581c24
-  // Golden Brown: #a67c00
-  // Cream/Beige: #fbf9f6 / #f5ebd9
-  // Dark Charcoal: #333333
-
-  const faqs = [
-    {
-      q: "What is Carpet Accelerator?",
-      a: "It is a focused growth program designed to support carpet artisans, weavers, and MSMEs in transforming traditional craft into globally competitive lifestyle brands.",
-    },
-    {
-      q: "Who can apply?",
-      a: "Carpet Artisans, Weavers, Manufacturers, Exporters, SHGs, Cooperatives, MSMEs, Emerging Carpet Brands, and Women-led enterprises.",
-    },
-    {
-      q: "Is the program free?",
-      a: "Yes, the accelerator program is fully funded for selected participants to support industry growth.",
-    },
-    {
-      q: "What support will participants receive?",
-      a: "Mentorship, design training, packaging development, export readiness, digital selling support, and direct buyer connections.",
-    },
-    {
-      q: "Will export support be provided?",
-      a: "Absolutely. Export documentation, readiness, and direct buyer-seller meets are core components of Phase 2.",
-    },
-    {
-      q: "How many participants will be selected?",
-      a: "The cohort size is strictly limited to 30–50 participants to ensure highly personalized attention and one-on-one mentorship.",
-    },
-    {
-      q: "Is prior export experience required?",
-      a: "No, prior export experience is not required. We will train you to become export-ready.",
-    },
-  ];
 
   return (
     <div className="font-sans text-[#333333] bg-[#fbf9f6] min-h-screen scroll-smooth">
@@ -1178,43 +1142,7 @@ const CarpetAccelerator = () => {
         </div>
       </section>
 
-      {/* 10. FAQ Section */}
-      <section id="faq" className="py-20 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#581c24] mb-4">
-              Frequently Asked Questions
-            </h2>
-          </div>
-          <div className="space-y-4">
-            {faqs.map((faq, idx) => (
-              <div
-                key={idx}
-                className="border border-gray-200 rounded-xl overflow-hidden transition-all duration-300 bg-white hover:shadow-md"
-              >
-                <button
-                  className="w-full flex justify-between items-center p-6 text-left focus:outline-none"
-                  onClick={() => setActiveFaq(activeFaq === idx ? null : idx)}
-                >
-                  <span className="font-bold text-gray-800 text-lg">
-                    {faq.q}
-                  </span>
-                  {activeFaq === idx ? (
-                    <ChevronUp className="text-[#a67c00]" />
-                  ) : (
-                    <ChevronDown className="text-gray-400" />
-                  )}
-                </button>
-                <div
-                  className={`px-6 pb-6 text-gray-600 transition-all duration-300 ${activeFaq === idx ? "block" : "hidden"}`}
-                >
-                  {faq.a}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+    
 
       {/* 11. Contact Section */}
       <section className="py-20 bg-[#fbf9f6]">
