@@ -1291,7 +1291,7 @@ const CarpetAccelerator = () => {
             {/* Contact Info */}
             <div>
               <h2 className="text-3xl font-bold text-[#581c24] mb-6">
-                Get in Touch
+              Contact Us
               </h2>
               <p className="text-gray-600 mb-10">
                 Have questions about the program? Reach out to our support team.
