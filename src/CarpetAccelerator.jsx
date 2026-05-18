@@ -631,75 +631,7 @@ const CarpetAccelerator = () => {
         </div>
       </section>
 
-      {/* 8. Success Stories Section */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#581c24] text-center mb-16">
-            Impact & Success Stories
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-[#fbf9f6] p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-lg transition-all relative mt-8">
-              <div className="absolute -top-8 left-8 w-16 h-16 bg-[#581c24] rounded-full flex items-center justify-center border-4 border-white">
-                <span className="text-white font-bold text-xl">MK</span>
-              </div>
-              <h3 className="font-bold text-xl text-gray-800 mt-4">
-                Meera Khan
-              </h3>
-              <p className="text-[#a67c00] text-sm font-medium mb-4">
-                Handwoven Carpet Artisan
-              </p>
-              <p className="text-gray-600 italic mb-6">
-                "From selling carpets in local exhibitions to receiving premium
-                hotel orders, the accelerator helped me build a real brand."
-              </p>
-              <div className="pt-4 border-t border-gray-200 flex justify-between text-sm font-bold text-[#581c24]">
-                <span>4x Revenue Growth</span>
-                <span>6 New Buyers</span>
-              </div>
-            </div>
-
-            <div className="bg-[#fbf9f6] p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-lg transition-all relative mt-8">
-              <div className="absolute -top-8 left-8 w-16 h-16 bg-[#581c24] rounded-full flex items-center justify-center border-4 border-white">
-                <span className="text-white font-bold text-xl">RA</span>
-              </div>
-              <h3 className="font-bold text-xl text-gray-800 mt-4">
-                Ramesh Ansari
-              </h3>
-              <p className="text-[#a67c00] text-sm font-medium mb-4">
-                Carpet Weaver
-              </p>
-              <p className="text-gray-600 italic mb-6">
-                "Design training and packaging support helped me make my
-                products ready for modern homes and export markets."
-              </p>
-              <div className="pt-4 border-t border-gray-200 flex justify-between text-sm font-bold text-[#581c24]">
-                <span>300% Order Growth</span>
-                <span>12 Artisans Employed</span>
-              </div>
-            </div>
-
-            <div className="bg-[#fbf9f6] p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-lg transition-all relative mt-8">
-              <div className="absolute -top-8 left-8 w-16 h-16 bg-[#581c24] rounded-full flex items-center justify-center border-4 border-white">
-                <span className="text-white font-bold text-xl">SD</span>
-              </div>
-              <h3 className="font-bold text-xl text-gray-800 mt-4">
-                Sunita Devi
-              </h3>
-              <p className="text-[#a67c00] text-sm font-medium mb-4">
-                Women SHG Leader
-              </p>
-              <p className="text-gray-600 italic mb-6">
-                "Our group learned online selling, product photography, and
-                buyer communication. Now we sell beyond our district."
-              </p>
-              <div className="pt-4 border-t border-gray-200 flex justify-between text-sm font-bold text-[#581c24]">
-                <span>5x Sales Growth</span>
-                <span>20 Women Trained</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+  
 
       {/* 9. Application Section */}
       <section id="apply" className="py-24 bg-[#581c24] text-white">
@@ -1291,7 +1223,7 @@ const CarpetAccelerator = () => {
             {/* Contact Info */}
             <div>
               <h2 className="text-3xl font-bold text-[#581c24] mb-6">
-              Contact Us
+                Contact Us 
               </h2>
               <p className="text-gray-600 mb-10">
                 Have questions about the program? Reach out to our support team.
@@ -1320,8 +1252,8 @@ const CarpetAccelerator = () => {
                     <h4 className="font-bold text-gray-800">Phone</h4>
                     <p className="text-gray-600 mt-1">
                       +918770639098 <br />
-                      +919685740367 <br />
-                      +918827472507
+                      +91 96857 40367 <br />
+                      +91 88274 72507
                     </p>
                   </div>
                 </div>
@@ -1373,6 +1305,16 @@ const CarpetAccelerator = () => {
                     type="text"
                     className="w-full px-4 py-3 rounded-lg bg-gray-50 border-transparent focus:bg-white focus:ring-2 focus:ring-[#a67c00] focus:border-transparent outline-none transition-all"
                     placeholder="How can we help?"
+                  />
+                </div>
+                 <div>
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    Number
+                  </label>
+                  <input
+                    type="text"
+                    className="w-full px-4 py-3 rounded-lg bg-gray-50 border-transparent focus:bg-white focus:ring-2 focus:ring-[#a67c00] focus:border-transparent outline-none transition-all"
+                    placeholder="Your phone number"
                   />
                 </div>
                 <div>
