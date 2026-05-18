@@ -135,7 +135,7 @@ const CarpetAccelerator = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
             {[
-              { label: "Applications Start", value: "Coming Soon...", icon: <Star className="w-5 h-5 text-[#f5ebd9]"/> },
+              { label: "Applications Start", value: "Coming Soon", icon: <Star className="w-5 h-5 text-[#f5ebd9]"/> },
               { label: "Cohort Size", value: "30–50 Participants", icon: <Users className="w-5 h-5 text-[#f5ebd9]"/> },
               { label: "Program Duration", value: "3 Months", icon: <Briefcase className="w-5 h-5 text-[#f5ebd9]"/> }
             ].map((card, idx) => (
@@ -370,104 +370,173 @@ const CarpetAccelerator = () => {
             </div>
 
             <form className="p-8 md:p-12">
-              {/* Step 1 */}
+              {/* Step 1: Personal & Basic Info */}
               {activeStep === 1 && (
                 <div className="space-y-6 animate-fade-in">
-                  <h3 className="text-2xl font-bold text-[#581c24] mb-6">Personal Information</h3>
+                  <h3 className="text-2xl font-bold text-[#581c24] mb-6">Step 1: Basic Information (मूल जानकारी)</h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">Full Name</label>
-                      <input type="text" className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#a67c00] focus:border-transparent outline-none transition-all" placeholder="Enter full name" />
+                      <label className="block text-sm font-semibold text-gray-700 mb-2">Name of the Owner (मालिक का नाम) <span className="text-red-500">*</span></label>
+                      <input type="text" required className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#a67c00] focus:border-transparent outline-none transition-all" placeholder="Enter owner's name" />
                     </div>
                     <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">Mobile Number</label>
-                      <input type="tel" className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#a67c00] focus:border-transparent outline-none transition-all" placeholder="+91" />
+                      <label className="block text-sm font-semibold text-gray-700 mb-2">Owner's Mobile No (मालिक का मोबाइल नंबर) <span className="text-red-500">*</span></label>
+                      <input type="tel" required className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#a67c00] focus:border-transparent outline-none transition-all" placeholder="+91" />
                     </div>
                     <div className="md:col-span-2">
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">Email Address</label>
-                      <input type="email" className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#a67c00] focus:border-transparent outline-none transition-all" placeholder="your@email.com" />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">District</label>
-                      <input type="text" className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#a67c00] focus:border-transparent outline-none transition-all" placeholder="e.g. Bhadohi" />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">Village / City</label>
-                      <input type="text" className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#a67c00] focus:border-transparent outline-none transition-all" placeholder="City name" />
+                      <label className="block text-sm font-semibold text-gray-700 mb-2">District (जिला) <span className="text-red-500">*</span></label>
+                      <input type="text" required className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#a67c00] focus:border-transparent outline-none transition-all" placeholder="Enter district" />
                     </div>
                   </div>
                 </div>
               )}
 
-              {/* Step 2 */}
+              {/* Step 2: Business Profile */}
               {activeStep === 2 && (
                 <div className="space-y-6 animate-fade-in">
-                  <h3 className="text-2xl font-bold text-[#581c24] mb-6">Business Information</h3>
+                  <h3 className="text-2xl font-bold text-[#581c24] mb-6">Step 2: Business Profile (व्यवसाय प्रोफ़ाइल)</h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    
                     <div className="md:col-span-2">
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">Business/Unit Name</label>
-                      <input type="text" className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#a67c00] focus:border-transparent outline-none transition-all" placeholder="Enter business name" />
+                      <label className="block text-sm font-semibold text-gray-700 mb-2">Name of Organisation (संगठन का नाम)</label>
+                      <input type="text" className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#a67c00] outline-none transition-all" placeholder="Enter organisation name" />
                     </div>
+
                     <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">Business Type</label>
-                      <select className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#a67c00] focus:border-transparent outline-none bg-white">
+                      <label className="block text-sm font-semibold text-gray-700 mb-2">Organisation Type (संगठन का प्रकार) <span className="text-red-500">*</span></label>
+                      <select className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#a67c00] outline-none bg-white">
                         <option value="">Select Type</option>
-                        {["Weaver", "Artisan", "Manufacturer", "Exporter", "SHG", "Cooperative", "MSME", "Startup"].map(opt => <option key={opt} value={opt}>{opt}</option>)}
+                        <option value="Proprietorship">Proprietorship</option>
+                        <option value="Company">Company, कंपनी</option>
+                        <option value="Farmer">Farmer, किसान</option>
+                        <option value="SHG">Self Help Group (SHG), स्वयं सहायता समूह</option>
+                        <option value="FPO">Farmer Producer Organisation (FPO)</option>
+                        <option value="FPC">Farmer Producer Company (FPC)</option>
                       </select>
                     </div>
+
                     <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">Carpet Type</label>
-                      <select className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#a67c00] focus:border-transparent outline-none bg-white">
-                        <option value="">Select Carpet Type</option>
-                        {["Hand-knotted", "Hand-tufted", "Flatweave", "Wool Carpet", "Cotton Dhurrie", "Silk Carpet", "Jute Carpet", "Custom Rugs"].map(opt => <option key={opt} value={opt}>{opt}</option>)}
+                      <label className="block text-sm font-semibold text-gray-700 mb-2">Export Situation (निर्यात की स्थिति) <span className="text-red-500">*</span></label>
+                      <select className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#a67c00] outline-none bg-white">
+                        <option value="">Select Situation</option>
+                        <option value="Direct">Direct Export or through trader</option>
+                        <option value="Domestic">Domestic Exporter (घरेलू निर्यातक)</option>
+                        <option value="Local">Local Trader (स्थानीय व्यापारी)</option>
                       </select>
                     </div>
+
                     <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">Years of Experience</label>
-                      <input type="number" className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#a67c00] focus:border-transparent outline-none" placeholder="Years" />
+                      <label className="block text-sm font-semibold text-gray-700 mb-2">Production Capacity (उत्पादन क्षमता) <span className="text-red-500">*</span></label>
+                      <input type="text" required className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#a67c00] outline-none" placeholder="e.g. 1000 units/month" />
                     </div>
+
                     <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">Number of Workers</label>
-                      <input type="number" className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#a67c00] focus:border-transparent outline-none" placeholder="e.g. 15" />
+                      <label className="block text-sm font-semibold text-gray-700 mb-2">Number of Employees (कर्मचारियों की संख्या)</label>
+                      <input type="number" className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#a67c00] outline-none" placeholder="e.g. 50" />
+                    </div>
+
+                    <div className="md:col-span-2">
+                      <label className="block text-sm font-semibold text-gray-700 mb-2">Profile of Manufacturer / Seller (Working Process) <br/><span className="text-xs text-gray-500 font-normal">निर्माता/विक्रेता का प्रोफाइल (कार्यप्रणाली)</span> <span className="text-red-500">*</span></label>
+                      <textarea rows="2" className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#a67c00] outline-none resize-none" placeholder="Describe your working process..."></textarea>
+                    </div>
+
+                    <div className="md:col-span-2">
+                      <label className="block text-sm font-semibold text-gray-700 mb-2">Value-added products (if any): Please mention <br/><span className="text-xs text-gray-500 font-normal">(मूल्य संवर्धित उत्पाद (यदि कोई हों): कृपया उल्लेख करें।)</span></label>
+                      <input type="text" className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#a67c00] outline-none" placeholder="Mention value-added products" />
+                    </div>
+
+                    <div className="md:col-span-2">
+                      <label className="block text-sm font-semibold text-gray-700 mb-2">Social media page or GI tag details <br/><span className="text-xs text-gray-500 font-normal">(यदि आपके पास कोई सोशल मीडिया पेज है या जीआई टैग है, तो उसका उल्लेख करें।)</span></label>
+                      <input type="text" className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#a67c00] outline-none" placeholder="Links or GI tag info" />
                     </div>
                   </div>
                 </div>
               )}
 
-              {/* Step 3 */}
+              {/* Step 3: Documents & Needs */}
               {activeStep === 3 && (
-                <div className="space-y-6 animate-fade-in">
-                  <h3 className="text-2xl font-bold text-[#581c24] mb-6">Market & Support</h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="space-y-8 animate-fade-in">
+                  <h3 className="text-2xl font-bold text-[#581c24] mb-6">Step 3: Documents & Training Needs (दस्तावेज़ और प्रशिक्षण)</h3>
+                  
+                  {/* Checkboxes Section */}
+                  <div className="space-y-6">
                     <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">Current Sales Channel</label>
-                      <select className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#a67c00] focus:border-transparent outline-none bg-white">
-                        <option value="">Select Channel</option>
-                        {["Local Market", "Exhibition", "Retailers", "Exporters", "Online Marketplace", "Social Media"].map(opt => <option key={opt} value={opt}>{opt}</option>)}
-                      </select>
-                    </div>
-                    <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">Monthly Production Capacity</label>
-                      <input type="text" className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#a67c00] outline-none" placeholder="e.g. 500 sq ft" />
-                    </div>
-                    <div className="md:col-span-2">
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">Monthly Revenue Range</label>
-                      <input type="text" className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#a67c00] outline-none" placeholder="e.g. INR 50,000 - 1 Lakh" />
-                    </div>
-                    <div className="md:col-span-2">
-                      <label className="block text-sm font-semibold text-gray-700 mb-3">Support Needed (Select multiple)</label>
-                      <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-                        {["Branding", "Design", "Packaging", "Export", "Finance", "E-commerce", "Buyer Connection", "Certification"].map(opt => (
-                          <label key={opt} className="flex items-center gap-2 text-sm cursor-pointer hover:bg-gray-50 p-2 rounded border border-transparent hover:border-gray-200 transition-colors">
-                            <input type="checkbox" className="w-4 h-4 text-[#581c24] focus:ring-[#a67c00] rounded" />
-                            {opt}
+                      <label className="block text-sm font-bold text-gray-800 mb-3">Company Documents available (कंपनी के दस्तावेज़ उपलब्ध हैं) <span className="text-red-500">*</span></label>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        {[
+                          "Registration / Gumasta etc.", 
+                          "GST Registration", 
+                          "Bank Account", 
+                          "Import Export Certificate (IEC)", 
+                          "PAN Card", 
+                          "Other"
+                        ].map(doc => (
+                          <label key={doc} className="flex items-start gap-2 text-sm text-gray-700 cursor-pointer">
+                            <input type="checkbox" className="w-4 h-4 mt-0.5 text-[#581c24] focus:ring-[#a67c00] rounded" />
+                            <span>{doc}</span>
                           </label>
                         ))}
                       </div>
                     </div>
-                    <div className="md:col-span-2">
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">Why do you want to join?</label>
-                      <textarea rows="3" className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#a67c00] focus:border-transparent outline-none resize-none" placeholder="Tell us about your goals..."></textarea>
+
+                    <div>
+                      <label className="block text-sm font-bold text-gray-800 mb-3">Training Need Identified (प्रशिक्षण की आवश्यकता) <span className="text-red-500">*</span></label>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        {[
+                          "Product (Designing / Enhancement)", 
+                          "Process (प्रक्रिया)", 
+                          "Packing (पैकिंग)", 
+                          "Documentation (दास्तावेज़)", 
+                          "Marketing and Branding", 
+                          "Selling and Supply Chain",
+                          "Market Research (Product / Intelligence)",
+                          "Export Related (निर्यात संबंधी)",
+                          "Other"
+                        ].map(need => (
+                          <label key={need} className="flex items-start gap-2 text-sm text-gray-700 cursor-pointer">
+                            <input type="checkbox" className="w-4 h-4 mt-0.5 text-[#581c24] focus:ring-[#a67c00] rounded" />
+                            <span>{need}</span>
+                          </label>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* File Uploads Section */}
+                  <div className="pt-6 border-t border-gray-200">
+                    <h4 className="text-lg font-bold text-[#581c24] mb-4">Document Uploads (Max 10 MB each)</h4>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      
+                      <div>
+                        <label className="block text-sm font-semibold text-gray-700 mb-2">Aadhar card image (आधार कार्ड तस्वीर) <span className="text-red-500">*</span></label>
+                        <input type="file" required className="block w-full text-sm text-gray-500 file:mr-4 file:py-2.5 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-[#f5ebd9] file:text-[#581c24] hover:file:bg-[#e6d5bc] transition-all border border-gray-300 rounded-lg" />
+                      </div>
+
+                      <div>
+                        <label className="block text-sm font-semibold text-gray-700 mb-2">Pan Card (पैन कार्ड चित्र)</label>
+                        <input type="file" className="block w-full text-sm text-gray-500 file:mr-4 file:py-2.5 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-[#f5ebd9] file:text-[#581c24] hover:file:bg-[#e6d5bc] transition-all border border-gray-300 rounded-lg" />
+                      </div>
+
+                      <div>
+                        <label className="block text-sm font-semibold text-gray-700 mb-2">Products manufactured (निर्मित उत्पाद)</label>
+                        <input type="file" className="block w-full text-sm text-gray-500 file:mr-4 file:py-2.5 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-[#f5ebd9] file:text-[#581c24] hover:file:bg-[#e6d5bc] transition-all border border-gray-300 rounded-lg" />
+                      </div>
+
+                      <div>
+                        <label className="block text-sm font-semibold text-gray-700 mb-2">Company's brochure or catalogue</label>
+                        <input type="file" className="block w-full text-sm text-gray-500 file:mr-4 file:py-2.5 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-[#f5ebd9] file:text-[#581c24] hover:file:bg-[#e6d5bc] transition-all border border-gray-300 rounded-lg" />
+                      </div>
+
+                      <div>
+                        <label className="block text-sm font-semibold text-gray-700 mb-2">Image of Social Media Page or GI Tag</label>
+                        <input type="file" className="block w-full text-sm text-gray-500 file:mr-4 file:py-2.5 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-[#f5ebd9] file:text-[#581c24] hover:file:bg-[#e6d5bc] transition-all border border-gray-300 rounded-lg" />
+                      </div>
+
+                      <div>
+                        <label className="block text-sm font-semibold text-gray-700 mb-2">Other Above Mentioned documents</label>
+                        <input type="file" accept=".pdf" className="block w-full text-sm text-gray-500 file:mr-4 file:py-2.5 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-[#f5ebd9] file:text-[#581c24] hover:file:bg-[#e6d5bc] transition-all border border-gray-300 rounded-lg" />
+                      </div>
+
                     </div>
                   </div>
                 </div>
