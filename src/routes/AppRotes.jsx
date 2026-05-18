@@ -1,14 +1,13 @@
-import { Route } from 'lucide-react'
-import React from 'react'
-import AdminDashboard from '../routes/AdminDashboard'
-import { Routes , Route } from 'react-router-dom'
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import AdminDashboard from '../AdminDashboard';
 
-function AppRotes() {
+function AppRoutes() {
   return (
     <Routes>
       <Route path="/AdminDashboard" element={<AdminDashboard />} />
     </Routes>
-  )
+  );
 }
 
-export default AppRotes
+export default AppRoutes;
