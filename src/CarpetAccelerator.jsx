@@ -1331,7 +1331,7 @@ const CarpetAccelerator = () => {
                   type="button"
                   className="w-full bg-[#581c24] text-white font-bold py-4 rounded-lg hover:bg-[#43151b] transition-colors shadow-md"
                 >
-                  Send Message
+                  Send Query
                 </button>
               </form>
             </div>
