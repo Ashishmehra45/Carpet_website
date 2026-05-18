@@ -1320,8 +1320,8 @@ const CarpetAccelerator = () => {
                     <h4 className="font-bold text-gray-800">Phone</h4>
                     <p className="text-gray-600 mt-1">
                       +918770639098 <br />
-                      +91 96857 40367 <br />
-                      +91 88274 72507
+                      +919685740367 <br />
+                      +918827472507
                     </p>
                   </div>
                 </div>
