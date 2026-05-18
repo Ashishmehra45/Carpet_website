@@ -46,7 +46,7 @@ const CarpetAccelerator = () => {
   const handlePrevStep = (e) => { e.preventDefault(); setActiveStep(prev => Math.max(prev - 1, 1)); };
 
   // BACKEND API CONNECTION
-  const submitApplication = async (e) => {
+const submitApplication = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
     const toastId = toast.loading('Submitting your application...');
@@ -61,23 +61,21 @@ const CarpetAccelerator = () => {
         if (files[key]) data.append(key, files[key]);
       });
 
-      // API Call to your Node.js backend
-      const response = await axios.post(`${API_URL}/applications`, data, {
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
+      // API Call using Axios
+      const response = await apiClient.post('/applications', data, {
+        headers: { 'Content-Type': 'multipart/form-data' }
       });
 
-      const result = response.data;
-
-      if (response.ok) {
+      // AXIOS MEIN RESPONSE.OK NAHI HOTA, RESPONSE.STATUS CHECK KARO
+      if (response.status === 201 || response.status === 200) {
         toast.success('Registration Successful!', { id: toastId });
-        setActiveStep(4); // Move to Success Step
-      } else {
-        toast.error(result.message || 'Submission failed. Please check fields.', { id: toastId });
+        setActiveStep(4); // Ab ye chalega!
+        window.scrollTo(0, 0); 
       }
     } catch (error) {
-      toast.error('Server error. Ensure backend is running.', { id: toastId });
+      // Axios error ko handle karne ka sahi tarika
+      const errMsg = error.response?.data?.message || 'Submission failed. Check backend.';
+      toast.error(errMsg, { id: toastId });
       console.error(error);
     } finally {
       setIsSubmitting(false);
@@ -602,27 +600,7 @@ const CarpetAccelerator = () => {
                 </div>
               )}
 
-              {/* NEW STEP 4: SUCCESS MESSAGE & WHATSAPP LINK */}
-              {activeStep === 4 && (
-                <div className="text-center py-12 animate-fade-in">
-                  <div className="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <CheckCircle className="w-12 h-12 text-green-600" />
-                  </div>
-                  <h3 className="text-3xl md:text-4xl font-extrabold text-gray-800 mb-4">Registration Successful!</h3>
-                  <p className="text-lg text-gray-600 mb-8 max-w-lg mx-auto">
-                    Your application has been submitted successfully to the Carpet Accelerator program. Please join our official WhatsApp group for important updates and next steps.
-                  </p>
-                  <a 
-                    href="https://chat.whatsapp.com/HUKOaGdqPzj0D3zMofEEv6" 
-                    target="_blank" 
-                    rel="noreferrer" 
-                    className="inline-flex items-center gap-3 bg-[#25D366] text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-[#1ebd57] transition-all shadow-lg hover:-translate-y-1"
-                  >
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" className="w-6 h-6" />
-                    Join WhatsApp Group
-                  </a>
-                </div>
-              )}
+             
 
               {/* Form Navigation Controls (Hidden if successful) */}
               {activeStep < 4 && (
@@ -648,6 +626,28 @@ const CarpetAccelerator = () => {
                 </div>
               )}
             </form>
+
+             {/* NEW STEP 4: SUCCESS MESSAGE & WHATSAPP LINK */}
+              {activeStep === 4 && (
+                <div className="text-center py-12 animate-fade-in">
+                  <div className="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <CheckCircle className="w-12 h-12 text-green-600" />
+                  </div>
+                  <h3 className="text-3xl md:text-4xl font-extrabold text-gray-800 mb-4">Registration Successful!</h3>
+                  <p className="text-lg text-gray-600 mb-8 max-w-lg mx-auto">
+                    Your application has been submitted successfully to the Carpet Accelerator program. Please join our official WhatsApp group for important updates and next steps.
+                  </p>
+                  <a 
+                    href="https://chat.whatsapp.com/HUKOaGdqPzj0D3zMofEEv6" 
+                    target="_blank" 
+                    rel="noreferrer" 
+                    className="inline-flex items-center gap-3 bg-[#25D366] text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-[#1ebd57] transition-all shadow-lg hover:-translate-y-1"
+                  >
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" className="w-6 h-6" />
+                    Join WhatsApp Group
+                  </a>
+                </div>
+              )}
           </div>
         </div>
       </section>
