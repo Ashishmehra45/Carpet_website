@@ -107,7 +107,7 @@ const AdminDashboard = () => {
                     filePath ? (
                       <a 
                         key={key}
-                        href={`${API_URL.replace('/api', '')}${filePath}`} 
+                        href={filePath} 
                         target="_blank" 
                         rel="noreferrer"
                         className="flex items-center gap-3 p-4 bg-blue-50 text-blue-700 rounded-lg border border-blue-200 hover:bg-blue-100 transition-all font-semibold text-sm"
