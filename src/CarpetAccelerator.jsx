@@ -1252,9 +1252,9 @@ const CarpetAccelerator = () => {
                   <div>
                     <h4 className="font-bold text-gray-800">Address</h4>
                     <p className="text-gray-600 mt-1">
-                      Carpet Accelerator Office,
+                      MP Industrial Development Corporation Ltd.
                       <br />
-                      Bhopal, Madhya Pradesh
+                      21, Arera Hills, Bhopal, 462011
                     </p>
                   </div>
                 </div>
@@ -1265,7 +1265,11 @@ const CarpetAccelerator = () => {
                   </div>
                   <div>
                     <h4 className="font-bold text-gray-800">Phone</h4>
-                    <p className="text-gray-600 mt-1">0755-2577145</p>
+                    <p className="text-gray-600 mt-1">
+                      +918770639098 <br />
+                      +91 96857 40367 <br />
+                      +91 88274 72507
+                    </p>
                   </div>
                 </div>
 
@@ -1276,7 +1280,7 @@ const CarpetAccelerator = () => {
                   <div>
                     <h4 className="font-bold text-gray-800">Email</h4>
                     <p className="text-gray-600 mt-1">
-                      support@carpetaccelerator.in
+                      Export.investment@mpidc.co.in
                     </p>
                   </div>
                 </div>
