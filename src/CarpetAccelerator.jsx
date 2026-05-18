@@ -107,13 +107,16 @@ const CarpetAccelerator = () => {
       if (response.status === 201 || response.status === 200) {
         toast.success("Registration Successful!", { id: toastId });
 
+        // 1. Step change karo
         setActiveStep(4);
 
+        // 2. DOM update hone ka wait karo aur phir scroll karo
         setTimeout(() => {
-          document
-            .getElementById("success-section")
-            ?.scrollIntoView({ behavior: "smooth", block: "center" });
-        }, 100);
+          const element = document.getElementById("success-section");
+          if (element) {
+            element.scrollIntoView({ behavior: "smooth", block: "center" });
+          }
+        }, 300); // Thoda time 300ms kar do taaki component render ho jaye
       }
     } catch (error) {
       // Axios error ko handle karne ka sahi tarika
