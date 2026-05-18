@@ -39,6 +39,8 @@ const CarpetAccelerator = () => {
   const [formData, setFormData] = useState({
     ownerName: "",
     mobileNo: "",
+    isExporting: "",
+    exportCountries: "",
     district: "",
     organisationName: "",
     orgType: "",
@@ -949,6 +951,57 @@ const CarpetAccelerator = () => {
                         className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#a67c00] outline-none"
                         placeholder="Links or GI tag info"
                       />
+                    </div>
+
+                    {/* New Question: Export to other countries */}
+                    <div className="md:col-span-2 space-y-4">
+                      {/* Question 1: Export? */}
+                      <div>
+                        <label className="block text-sm font-semibold text-gray-700 mb-3">
+                          Do you export to other countries?
+                        </label>
+                        <div className="flex gap-6">
+                          <label className="flex items-center gap-2 cursor-pointer">
+                            <input
+                              type="radio"
+                              name="isExporting"
+                              value="Yes"
+                              onChange={handleInputChange}
+                              checked={formData.isExporting === "Yes"}
+                              className="w-4 h-4"
+                            />{" "}
+                            Yes
+                          </label>
+                          <label className="flex items-center gap-2 cursor-pointer">
+                            <input
+                              type="radio"
+                              name="isExporting"
+                              value="No"
+                              onChange={handleInputChange}
+                              checked={formData.isExporting === "No"}
+                              className="w-4 h-4"
+                            />{" "}
+                            No
+                          </label>
+                        </div>
+                      </div>
+
+                      {/* Question 2: Country Name (Visible only if Yes) */}
+                      {formData.isExporting === "Yes" && (
+                        <div className="animate-fade-in">
+                          <label className="block text-sm font-semibold text-gray-700 mb-2">
+                            If Yes, please mention countries (देशों के नाम)
+                          </label>
+                          <input
+                            type="text"
+                            name="exportCountries"
+                            value={formData.exportCountries}
+                            onChange={handleInputChange}
+                            className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#a67c00] outline-none"
+                            placeholder="e.g., USA, Germany, UAE"
+                          />
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>
