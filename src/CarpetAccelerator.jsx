@@ -87,29 +87,29 @@ const CarpetAccelerator = () => {
  const handleNextStep = (e) => {
     e.preventDefault();
 
-    // --- STEP 1 VALIDATION ---
-    if (activeStep === 1) {
-      // Step 1 ke mandatory fields check karo (apne hisaab se fields add/remove kar sakte ho)
-      if (!formData.ownerName || !formData.mobileNo || !formData.organisationName || !formData.district) {
-        toast.error("Please fill all the required fields ");
-        return; // Return karne se aage ka code nahi chalega (Next step block ho jayega)
-      }
+    // // --- STEP 1 VALIDATION ---
+    // if (activeStep === 1) {
+    //   // Step 1 ke mandatory fields check karo (apne hisaab se fields add/remove kar sakte ho)
+    //   if (!formData.ownerName || !formData.mobileNo || !formData.organisationName || !formData.district) {
+    //     toast.error("Please fill all the required fields ");
+    //     return; // Return karne se aage ka code nahi chalega (Next step block ho jayega)
+    //   }
       
-      // Mobile number ki length check (Optional but recommended)
-      if (formData.mobileNo.length < 10) {
-        toast.error("Please enter a valid 10-digit mobile number.");
-        return;
-      }
-    }
+    //   // Mobile number ki length check (Optional but recommended)
+    //   if (formData.mobileNo.length < 10) {
+    //     toast.error("Please enter a valid 10-digit mobile number.");
+    //     return;
+    //   }
+    // }
 
-    // --- STEP 2 VALIDATION ---
-    if (activeStep === 2) {
-      // Step 2 ke mandatory fields
-      if (!formData.orgType || !formData.productionCapacity || !formData.employees) {
-        toast.error("Please fill all the required fields ");
-        return;
-      }
-    }
+    // // --- STEP 2 VALIDATION ---
+    // if (activeStep === 2) {
+    //   // Step 2 ke mandatory fields
+    //   if (!formData.orgType || !formData.productionCapacity || !formData.employees) {
+    //     toast.error("Please fill all the required fields ");
+    //     return;
+    //   }
+    // }
 
     // Agar saari validations pass ho gayi, tabhi step aage badhao
     setActiveStep((prev) => Math.min(prev + 1, 3));
