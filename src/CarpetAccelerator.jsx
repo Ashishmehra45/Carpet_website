@@ -429,7 +429,7 @@ const CarpetAccelerator = () => {
             Carpet Accelerator
           </h1>
           <h2 className="text-2xl md:text-3xl font-medium text-[#f5ebd9] mb-8 tracking-wide uppercase drop-shadow-lg">
-            From Looms to Global Rooms
+            From Royal Courts To Global Homes
           </h2>
           <p className="max-w-3xl mx-auto text-lg md:text-xl text-white/95 mb-10 leading-relaxed font-medium drop-shadow-lg">
             Empowering carpet artisans, weavers, manufacturers, and
