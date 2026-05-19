@@ -4,6 +4,10 @@ import {
   ArrowUpRight,
   History as HistoryIcon,
   ShieldCheck,
+  Info,ClipboardCheck,
+  CalendarDays,
+  Gift,
+  HelpCircle,
   Package,
   TrendingUp,
   Users,
@@ -37,6 +41,83 @@ const CarpetAccelerator = () => {
   const [activeStep, setActiveStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const [activeTab, setActiveTab] = useState('about');
+  const [openFaqIndex, setOpenFaqIndex] = useState(null);
+
+  // Tabs structure metadata
+  const tabs = [
+    { id: 'about', label: 'About the Program', icon: Info, color: '#581c24' },
+    { id: 'eligibility', label: 'Eligibility & Application', icon: ClipboardCheck, color: '#a67c00' },
+    { id: 'details', label: 'Program Details', icon: CalendarDays, color: '#581c24' },
+    { id: 'benefits', label: 'Benefits & Outcomes', icon: Gift, color: '#a67c00' },
+  ];
+
+  // Dynamic FAQ Content mapped with each Tab ID
+  const faqData = {
+    about: [
+      {
+        q: "What is the Carpet Accelerator?",
+        a: "The Carpet Accelerator is a flagship growth initiative designed to scale traditional weavers, master artisans, and carpet manufacturers into global brands through design innovation, digital onboarding, and export handholding."
+      },
+      {
+        q: 'What does "From Local Weaves to Global Markets" mean?',
+        a: "It represents our core mission: taking traditional hand-knotted heritage, modernizing its supply chain, enhancing quality/packaging benchmarks, and establishing direct linkages with international buyers."
+      },
+      {
+        q: "How long does the program run?",
+        a: "The standard cohort duration is 12 weeks, which includes intense technical modules, design masterclasses, digital asset creation workshops, and direct export B2B matchmaking sessions."
+      },
+      {
+        q: "Is there a cost to participate in the program?",
+        a: "No, this program is fully sponsored to uplift the artisan ecosystem. There are zero enrollment or training fees for selected participants."
+      }
+    ],
+    eligibility: [
+      {
+        q: "Who is eligible to apply for this accelerator?",
+        a: "Carpet weavers, hand-knotted artisans, loom operators, micro-entrepreneurs, existing exporters, and cooperative societies based out of target weaving clusters can apply."
+      },
+      {
+        q: "What documents are required during application?",
+        a: "You need to submit your Aadhaar Card, PAN Card, Company Registration details (if available), current product profile photographs, and existing business catalogs."
+      },
+      {
+        q: "Can individual weavers apply or only registered firms?",
+        a: "Both can apply! Individual master weavers looking to build their brand receive customized training, while established firms are fast-tracked toward advanced export readiness frameworks."
+      }
+    ],
+    details: [
+      {
+        q: "Where will the training modules be conducted?",
+        a: "The program uses a hybrid approach: technical layout training and buyer matchmaking happen digitally, while design workshops and loom assessments are held directly within major cluster centers."
+      },
+      {
+        q: "What specific domains are covered under design innovation?",
+        a: "We cover contemporary color palette forecasting, Persian vs. modern geometric design mapping, yarn optimization, standard quality control metrics, and elite premium transit-safe packaging."
+      },
+      {
+        q: "Will there be real-time market access opportunities?",
+        a: "Yes, top-performing cohort members get direct matchmaking invites with corporate buyers, bulk B2B purchase groups, international aggregators, and curated trade fairs."
+      }
+    ],
+    benefits: [
+      {
+        q: "What tangible assets will I get after completion?",
+        a: "Participants receive custom digital catalog development support, verified company registration guidance, setup assistance for secure global payment systems, and direct access to trade infrastructure."
+      },
+      {
+        q: "How does the program help with export documentations?",
+        a: "We provide step-by-step documentation handholding, including guidance on obtaining an IEC (Importer Exporter Code), custom clearance routing parameters, and international regulatory compliance certificates."
+      }
+    ]
+  };
+
+  // Helper function to handle tab switches clean
+  const handleTabChange = (tabId) => {
+    setActiveTab(tabId);
+    setOpenFaqIndex(null); // Reset accordion on tab switch
+  };
 
   // Accelerator Form Data States
   const [formData, setFormData] = useState({
@@ -791,7 +872,6 @@ const CarpetAccelerator = () => {
                 />
                 {/* Floating Badge */}
                 <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-sm px-4 py-2 rounded-lg text-sm font-bold text-[#581c24] flex items-center gap-2 shadow-lg">
-                 
                   <HistoryIcon className="w-5 h-5 text-[#581c24]" />
                   Royal Heritage
                 </div>
@@ -834,7 +914,6 @@ const CarpetAccelerator = () => {
                   <span className="flex items-center gap-2 bg-rose-50 px-3 py-1.5 rounded-md border border-rose-100">
                     <ShieldCheck className="w-4 h-4 text-[#a67c00]" /> GI Tagged
                   </span>
-                 
                 </div>
               </div>
             </div>
@@ -892,7 +971,6 @@ const CarpetAccelerator = () => {
                   <span className="flex items-center gap-2 bg-amber-50 px-3 py-1.5 rounded-md border border-amber-100 text-[#a67c00]">
                     <TrendingUp className="w-4 h-4" /> Sustainable Growth
                   </span>
-                 
                 </div>
               </div>
             </div>
@@ -1445,6 +1523,126 @@ const CarpetAccelerator = () => {
         </div>
       </section>
 
+      <section id="faqs" className="py-20 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Main Grid: Tabs Left + FAQs Right */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mt-10">
+          
+          {/* LEFT SIDEBAR CONTROLS */}
+          <div className="lg:col-span-4 space-y-6">
+            {/* Nav Cards */}
+            <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden p-2 space-y-1">
+              {tabs.map((tab) => {
+                const IconComponent = tab.icon;
+                const isActive = activeTab === tab.id;
+                return (
+                  <button
+                    key={tab.id}
+                    onClick={() => handleTabChange(tab.id)}
+                    className={`w-full flex items-center gap-4 px-5 py-4 rounded-xl font-bold text-left text-sm transition-all duration-300 relative ${
+                      isActive 
+                        ? 'bg-[#581c24]/5 text-[#581c24]' 
+                        : 'text-gray-600 hover:bg-gray-50'
+                    }`}
+                  >
+                    {/* Active left indicator accent bar */}
+                    {isActive && (
+                      <div className="absolute left-0 top-0 bottom-0 w-1 bg-[#581c24] rounded-r-lg" />
+                    )}
+                    
+                    {/* Dynamic Tinted Icons */}
+                    <div className={`w-9 h-9 rounded-xl flex items-center justify-center border transition-colors ${
+                      isActive 
+                        ? 'bg-[#581c24] text-white border-transparent' 
+                        : 'bg-gray-50 text-gray-500 border-gray-200'
+                    }`}>
+                      <IconComponent className="w-4 h-4" />
+                    </div>
+                    {tab.label}
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Support Widget Box */}
+            <div className="bg-[#581c24]/5 rounded-2xl p-6 border border-[#581c24]/10 text-left relative overflow-hidden">
+              <div className="absolute -right-6 -bottom-6 text-[#581c24]/5">
+                <HelpCircle className="w-32 h-32" />
+              </div>
+              <h3 className="text-lg font-extrabold text-gray-900 mb-2">Still have questions?</h3>
+              <p className="text-gray-600 text-xs md:text-sm leading-relaxed mb-6">
+                Contact us to speak with an Accelerator team member who will be happy to assist you.
+              </p>
+              
+              <div className="space-y-3 relative z-10">
+                <a href="mailto:exportcell@mpidc.co.in" className="flex items-center gap-3 text-xs md:text-sm font-bold text-[#581c24] hover:underline">
+                  <Mail className="w-4 h-4 text-[#a67c00]" /> exportcell@mpidc.co.in
+                </a>
+                <a href="tel:0755-2577145" className="flex items-center gap-3 text-xs md:text-sm font-bold text-[#581c24] hover:underline">
+                  <Phone className="w-4 h-4 text-[#a67c00]" /> 0755-2577145
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* RIGHT SIDEBAR DYNAMIC FAQS LIST */}
+          <div className="lg:col-span-8 bg-[#fbf9f6]/40 border border-gray-100 rounded-2xl p-6 md:p-8 min-h-[480px]">
+            {/* Header Identity */}
+            <div className="flex items-center gap-3 mb-8 pb-4 border-b border-gray-100">
+              <HelpCircle className="w-6 h-6 text-[#a67c00]" />
+              <h3 className="text-xl font-extrabold text-gray-900">
+                {tabs.find(t => t.id === activeTab)?.label}
+              </h3>
+            </div>
+
+            {/* Accordion Wrapper */}
+            <div className="space-y-4">
+              {faqData[activeTab]?.map((faq, index) => {
+                const isOpen = openFaqIndex === index;
+                return (
+                  <div 
+                    key={index}
+                    className="bg-white border border-gray-100 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300"
+                  >
+                    {/* Accordion Header Button */}
+                    <button
+                      onClick={() => setOpenFaqIndex(isOpen ? null : index)}
+                      className="w-full flex items-center justify-between gap-4 p-5 text-left font-bold text-gray-800 hover:text-[#581c24] transition-colors duration-200"
+                    >
+                      <div className="flex items-center gap-3.5">
+                        <span className="w-6 h-6 rounded-md bg-gray-50 border text-xs font-bold text-gray-400 flex items-center justify-center flex-shrink-0 group-hover:border-rose-200">
+                          Q
+                        </span>
+                        <span className="text-sm md:text-base tracking-tight">{faq.q}</span>
+                      </div>
+                      <ChevronDown className={`w-5 h-5 text-gray-400 flex-shrink-0 transition-transform duration-300 ${isOpen ? 'rotate-180 text-[#581c24]' : ''}`} />
+                    </button>
+
+                    {/* Accordion Smooth Body Drawer */}
+                    <div 
+                      className={`transition-all duration-300 ease-in-out overflow-hidden ${
+                        isOpen ? 'max-h-60 border-t border-gray-50' : 'max-h-0'
+                      }`}
+                    >
+                      <div className="p-5 text-sm md:text-base text-gray-600 bg-gray-50/50 leading-relaxed text-left flex gap-3.5">
+                        <span className="w-6 h-6 rounded-md bg-rose-50 text-xs font-bold text-[#581c24] flex items-center justify-center flex-shrink-0 border border-rose-100">
+                          A
+                        </span>
+                        <p className="font-medium text-gray-600">{faq.a}</p>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
       {/* 11. Contact Section */}
       <section className="py-20 bg-[#fbf9f6]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -1600,6 +1798,7 @@ const CarpetAccelerator = () => {
                 Empowering carpet makers to move from local looms to global
                 rooms.
               </p>
+              
             </div>
 
             <div>
@@ -1645,12 +1844,41 @@ const CarpetAccelerator = () => {
                 Contact Info
               </h4>
               <ul className="space-y-3 text-sm text-gray-400">
-                <li className="flex items-center gap-2">
-                  <MapPin className="w-4 h-4 text-[#a67c00]" /> Bhopal, MP
+                <li className="flex items-center gap-3 group">
+                  <div className="p-2 bg-amber-50 rounded-lg border border-amber-100 group-hover:bg-amber-100 transition-colors">
+                    <MapPin className="w-4 h-4 text-[#a67c00]" />
+                  </div>
+                  <span className="text-gray-600 font-medium text-sm md:text-base">
+                    Bhopal, MP
+                  </span>
                 </li>
-                <li className="flex items-center gap-2">
-                  <Phone className="w-4 h-4 text-[#a67c00]" /> 0755-2577145
-                </li>
+                <>
+                  {/* Phone Number */}
+                  <li className="flex items-center gap-3 group">
+                    <div className="p-2 bg-amber-50 rounded-lg border border-amber-100 group-hover:bg-amber-100 transition-colors">
+                      <Phone className="w-4 h-4 text-[#a67c00]" />
+                    </div>
+                    <a
+                      href="tel:0755-2577145"
+                      className="text-gray-600 hover:text-[#ffffff] font-medium transition-colors text-sm md:text-base"
+                    >
+                      0755-2577145
+                    </a>
+                  </li>
+
+                  {/* Email Address */}
+                  <li className="flex items-center gap-3 group mt-3">
+                    <div className="p-2 bg-amber-50 rounded-lg border border-amber-100 group-hover:bg-white ">
+                      <Mail className="w-4 h-4 text-[#000000]" />
+                    </div>
+                    <a
+                      href="mailto:Export.investment@mpidc.co.in"
+                      className="text-gray-600 hover:text-[#ffffff] font-medium transition-colors text-sm md:text-base break-all"
+                    >
+                      Export.investment@mpidc.co.in
+                    </a>
+                  </li>
+                </>
               </ul>
             </div>
 
