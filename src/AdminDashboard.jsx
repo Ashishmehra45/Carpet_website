@@ -30,6 +30,35 @@ const AdminDashboard = () => {
     app.organisationName?.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  // EXCEL EXPORT DATA MAPPING: सभी फॉर्म फील्ड्स को Excel के लिए मैप किया गया है
+  const csvData = applications.map(app => ({
+    "Application ID": app._id,
+    "Owner Name": app.ownerName || "",
+    "Mobile No": app.mobileNo || "",
+    "District": app.district || "",
+    "Organisation Name": app.organisationName || "",
+    "Organisation Type": app.orgType || "",
+    "Export Situation": app.exportSituation || "",
+    "Production Capacity": app.productionCapacity || "",
+    "Employees Count": app.employees || "",
+    "Working Process": app.workingProcess || "",
+    "Value Added Products": app.valueAddedProducts || "",
+    "Social Media or GI Info": app.socialMediaOrGI || "",
+    "Is Exporting?": app.isExporting || "",
+    "Export Countries": app.exportCountries || "",
+    // Arrays को कॉमा (,) से जोड़कर सिंगल स्ट्रिंग बनाया गया है ताकि Excel में एरर न आए
+    "Documents Available": app.docsAvailable ? app.docsAvailable.join(", ") : "",
+    "Training Needs": app.trainingNeeds ? app.trainingNeeds.join(", ") : "",
+    // Files की लिंक 
+    "Aadhar Card File": app.files?.aadharCard || "N/A",
+    "Pan Card File": app.files?.panCard || "N/A",
+    "Products Image": app.files?.productsImage || "N/A",
+    "Brochure File": app.files?.brochure || "N/A",
+    "Social Media File": app.files?.socialMediaImage || "N/A",
+    "Other Docs File": app.files?.otherDocs || "N/A",
+    "Status": app.status || "Pending"
+  }));
+
   return (
     <div className="flex h-screen bg-[#f3f4f6] font-sans text-gray-800">
       {/* Sidebar */}
@@ -52,9 +81,10 @@ const AdminDashboard = () => {
             className="bg-gray-100 px-4 py-2 rounded-lg w-80 outline-none"
             onChange={(e) => setSearchTerm(e.target.value)}
           />
+          {/* CSVLink में अब csvData पास किया गया है */}
           <CSVLink 
-            data={applications} 
-            filename={"Carpet_Applications.csv"}
+            data={csvData} 
+            filename={"Carpet_Applications_Complete_Details.csv"}
             className="flex items-center gap-2 bg-green-600 text-white px-5 py-2 rounded-lg font-bold hover:bg-green-700 transition-all"
           >
             <Download className="w-4 h-4" /> Export Excel
@@ -93,10 +123,10 @@ const AdminDashboard = () => {
               <h2 className="text-3xl font-extrabold text-[#581c24] mb-6">Details for {selectedApp.ownerName}</h2>
               
               <div className="grid grid-cols-2 gap-6 mb-8">
-                <div className="p-4 bg-gray-50 rounded-lg"><p className="text-xs text-gray-500 uppercase font-bold">Organisation</p><p className="font-bold">{selectedApp.organisationName}</p></div>
+                <div className="p-4 bg-gray-50 rounded-lg"><p className="text-xs text-gray-500 uppercase font-bold">Organisation</p><p className="font-bold">{selectedApp.organisationName || 'N/A'}</p></div>
                 <div className="p-4 bg-gray-50 rounded-lg"><p className="text-xs text-gray-500 uppercase font-bold">Mobile</p><p className="font-bold">{selectedApp.mobileNo}</p></div>
-                <div className="col-span-2 p-4 bg-gray-50 rounded-lg"><p className="text-xs text-gray-500 uppercase font-bold">Working Process</p><p className="font-bold">{selectedApp.workingProcess}</p></div>
-                <div className="col-span-2 p-4 bg-gray-50 rounded-lg"><p className="text-xs text-gray-500 uppercase font-bold">Training Needs</p><p className="font-bold">{selectedApp.trainingNeeds?.join(', ')}</p></div>
+                <div className="col-span-2 p-4 bg-gray-50 rounded-lg"><p className="text-xs text-gray-500 uppercase font-bold">Working Process</p><p className="font-bold">{selectedApp.workingProcess || 'N/A'}</p></div>
+                <div className="col-span-2 p-4 bg-gray-50 rounded-lg"><p className="text-xs text-gray-500 uppercase font-bold">Training Needs</p><p className="font-bold">{selectedApp.trainingNeeds?.join(', ') || 'N/A'}</p></div>
               </div>
 
               {/* Uploaded Documents Section */}

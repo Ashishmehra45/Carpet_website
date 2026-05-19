@@ -655,7 +655,7 @@ const CarpetAccelerator = () => {
               { title: "Product Design & Trends", icon: <Lightbulb /> },
               { title: "Packaging & Catalogues", icon: <Package /> },
               { title: "Export Readiness", icon: <Globe /> },
-              { title: "E-commerce & Digital", icon: <Monitor /> },
+              { title: "E-commerce & Digital onboarding", icon: <Monitor /> },
               { title: "Buyer-Seller Meet", icon: <Briefcase /> },
               { title: "Excellence Awards", icon: <Award /> },
               { title: "End-to-End Support", icon: <CheckCircle /> },
