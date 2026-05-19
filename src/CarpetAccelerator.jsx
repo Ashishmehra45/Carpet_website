@@ -834,9 +834,7 @@ const CarpetAccelerator = () => {
                   <span className="flex items-center gap-2 bg-rose-50 px-3 py-1.5 rounded-md border border-rose-100">
                     <ShieldCheck className="w-4 h-4 text-[#a67c00]" /> GI Tagged
                   </span>
-                  <span className="opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300 flex items-center gap-1 text-sm uppercase tracking-wider text-[#a67c00] cursor-pointer">
-                    Read More <ArrowUpRight className="w-5 h-5" />
-                  </span>
+                 
                 </div>
               </div>
             </div>
@@ -894,9 +892,7 @@ const CarpetAccelerator = () => {
                   <span className="flex items-center gap-2 bg-amber-50 px-3 py-1.5 rounded-md border border-amber-100 text-[#a67c00]">
                     <TrendingUp className="w-4 h-4" /> Sustainable Growth
                   </span>
-                  <span className="opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300 flex items-center gap-1 text-sm uppercase tracking-wider text-[#581c24] cursor-pointer">
-                    Read More <ArrowUpRight className="w-5 h-5" />
-                  </span>
+                 
                 </div>
               </div>
             </div>
