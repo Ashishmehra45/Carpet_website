@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import {
   Globe,
+  ArrowUpRight,
+  History as HistoryIcon,
+  ShieldCheck,
   Package,
   TrendingUp,
   Users,
@@ -26,6 +29,9 @@ import logo from "/MPIDCUPDATEDLOGO.png";
 import { Toaster, toast } from "react-hot-toast";
 import API_URL from "./config/config";
 import axios from "axios";
+import Mp_map from "/MP-Map.png";
+import img1 from "/01.webp";
+import img2 from "/03.jpg";
 
 const CarpetAccelerator = () => {
   const [activeStep, setActiveStep] = useState(1);
@@ -84,7 +90,7 @@ const CarpetAccelerator = () => {
     else setState(state.filter((item) => item !== value));
   };
 
- const handleNextStep = (e) => {
+  const handleNextStep = (e) => {
     e.preventDefault();
 
     // // --- STEP 1 VALIDATION ---
@@ -94,7 +100,7 @@ const CarpetAccelerator = () => {
     //     toast.error("Please fill all the required fields ");
     //     return; // Return karne se aage ka code nahi chalega (Next step block ho jayega)
     //   }
-      
+
     //   // Mobile number ki length check (Optional but recommended)
     //   if (formData.mobileNo.length < 10) {
     //     toast.error("Please enter a valid 10-digit mobile number.");
@@ -205,13 +211,12 @@ const CarpetAccelerator = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-20 items-center">
             {/* Logo Section */}
-            <div className="flex items-center gap-3 md:gap-4">
-              {/* MPIDC Logo */}
-              <img
-                src={logo}
-                alt="MPIDC Logo"
-                className="w-auto h-10 md:h-12 object-contain shrink-0"
-              />
+            <div className="flex items-center gap-4 py-4 px-2">
+              <div className="flex flex-col">
+                <h1 className="text-2xl font-bold text-gray-900 tracking-tight leading-none">
+                  Carpet <span className="text-[#a67c00]">Accelerator</span>
+                </h1>
+              </div>
             </div>
 
             {/* Desktop Navigation */}
@@ -240,7 +245,6 @@ const CarpetAccelerator = () => {
               >
                 Eligibility
               </a>
-             
             </div>
 
             {/* Desktop Apply Button */}
@@ -405,47 +409,149 @@ const CarpetAccelerator = () => {
       </section>
 
       {/* 3. About Section */}
+
       <section id="about" className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#581c24] mb-6">
-            From Local Weaves to Global Markets
-          </h2>
-          <div className="w-24 h-1 bg-[#a67c00] mx-auto mb-8 rounded-full"></div>
-          <p className="max-w-4xl mx-auto text-lg text-gray-600 leading-relaxed">
-            The Carpet Accelerator is a focused growth program designed to
-            support carpet artisans, weavers, manufacturers, exporters, and
-            emerging entrepreneurs. The program helps participants improve
-            product design, quality, packaging, branding, digital presence,
-            export readiness, and buyer connections.
-          </p>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Heading Section */}
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-extrabold text-[#581c24] mb-4">
+              From Local Weaves to Global Markets
+            </h2>
+            <div className="w-24 h-1.5 bg-[#a67c00] mx-auto rounded-full"></div>
+          </div>
+
+          {/* Content Grid: Image + Text */}
+          <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+            {/* Left: Image Container */}
+            <div className="w-full lg:w-1/2 overflow-hidden rounded-2xl shadow-xl">
+              <img
+                src={Mp_map}
+                alt="Carpet Weaving Landscape"
+                className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+              />
+            </div>
+
+            {/* Right: Text Container */}
+            <div className="w-full lg:w-1/2 text-left">
+              <p className="text-lg text-gray-700 leading-relaxed">
+                The{" "}
+                <span className="font-bold text-[#581c24]">
+                  Carpet Accelerator
+                </span>{" "}
+                is a focused growth program designed to support carpet artisans,
+                weavers, manufacturers, exporters, and emerging entrepreneurs.
+                <br />
+                <br />
+                We empower participants to enhance{" "}
+                <strong>product design, quality, and packaging</strong> while
+                building a strong <strong>digital presence</strong>. From market
+                branding to achieving <strong>export readiness</strong>, we
+                provide the essential bridge between local craftsmanship and
+                global buyers.
+              </p>
+
+              {/* Simple Stats or Highlight */}
+              <div className="mt-8 flex gap-6">
+                <div className="border-l-4 border-[#a67c00] pl-4">
+                  <span className="block text-2xl font-bold text-[#581c24]">
+                    100%
+                  </span>
+                  <span className="text-sm text-gray-500 uppercase tracking-wider">
+                    Skill Focused
+                  </span>
+                </div>
+                <div className="border-l-4 border-[#581c24] pl-4">
+                  <span className="block text-2xl font-bold text-[#581c24]">
+                    Global
+                  </span>
+                  <span className="text-sm text-gray-500 uppercase tracking-wider">
+                    Market Access
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* 4. Why Join Section */}
-      <section className="py-16 bg-[#fbf9f6]">
+      {/* 2. WHY JOIN US SECTION */}
+      <section
+        id="why-join"
+        className="py-20 bg-[#fbf9f6] border-t border-[#e6d5bc]/30"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Section Header */}
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-extrabold text-[#581c24] mb-4">
+              Why Join the Accelerator Program?
+            </h2>
+            <p className="text-gray-600 max-w-2xl mx-auto text-base">
+              Get the resources, mentorship, and global network required to
+              scale your traditional carpet business into an international
+              brand.
+            </p>
+            <div className="w-24 h-1.5 bg-[#a67c00] mx-auto rounded-full mt-4"></div>
+          </div>
+
+          {/* Core Features Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              { title: "From Looms to Global Markets", icon: <Globe /> },
-              {
-                title: "Design Innovation with Traditional Craft",
-                icon: <Lightbulb />,
-              },
-              { title: "Branding & Packaging Support", icon: <Package /> },
-              { title: "Direct Buyer & Export Connect", icon: <TrendingUp /> },
-            ].map((item, idx) => (
-              <div
-                key={idx}
-                className="group bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 hover:-translate-y-2"
-              >
-                <div className="w-14 h-14 bg-[#f5ebd9] rounded-xl flex items-center justify-center text-[#a67c00] mb-6 group-hover:scale-110 group-hover:bg-[#581c24] group-hover:text-white transition-all">
-                  {item.icon}
-                </div>
-                <h3 className="text-xl font-bold text-[#333333] leading-tight">
-                  {item.title}
-                </h3>
+            {/* Card 1 */}
+            <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-start text-left">
+              <div className="w-12 h-12 bg-rose-50 text-[#581c24] rounded-xl flex items-center justify-center mb-6 border border-rose-100">
+                <Award className="w-6 h-6" />
               </div>
-            ))}
+              <h3 className="text-xl font-bold text-gray-800 mb-3">
+                Design Innovation
+              </h3>
+              <p className="text-gray-600 text-semibold leading-relaxed">
+                Learn modern design trends, color matching, and premium
+                packaging techniques to elevate your products for elite buyers.
+              </p>
+            </div>
+
+            {/* Card 2 */}
+            <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-start text-left">
+              <div className="w-12 h-12 bg-amber-50 text-[#a67c00] rounded-xl flex items-center justify-center mb-6 border border-amber-100">
+                <TrendingUp className="w-6 h-6" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-800 mb-3">
+                Digital & Branding
+              </h3>
+              <p className="text-gray-600  text-semibold leading-relaxed">
+                Build your own high-contrast digital catalogue, social media
+                presence, and modern branding assets to sell online
+                effortlessly.
+              </p>
+            </div>
+
+            {/* Card 3 */}
+            <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-start text-left">
+              <div className="w-12 h-12 bg-rose-50 text-[#581c24] rounded-xl flex items-center justify-center mb-6 border border-rose-100">
+                <Globe className="w-6 h-6" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-800 mb-3">
+                Export Readiness
+              </h3>
+              <p className="text-gray-600 text-semibold leading-relaxed">
+                Master export documentations, custom clearances, IEC codes,
+                international compliance, and secure global payment channels.
+              </p>
+            </div>
+
+            {/* Card 4 */}
+            <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-start text-left">
+              <div className="w-12 h-12 bg-amber-50 text-[#a67c00] rounded-xl flex items-center justify-center mb-6 border border-amber-100">
+                <ShieldCheck className="w-6 h-6" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-800 mb-3">
+                Market Access
+              </h3>
+              <p className="text-gray-600 text-semibold leading-relaxed">
+                Get direct business matchmaking opportunities, connections with
+                bulk B2B traders, exporters, and international trade fair
+                pathways.
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -652,6 +758,148 @@ const CarpetAccelerator = () => {
                 {item}
               </span>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="success-stories"
+        className="py-20 bg-[#fbf9f6] border-t border-[#e6d5bc]/30 overflow-hidden"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Section Header */}
+          <div className="text-center mb-16">
+            <span className="text-xs uppercase tracking-widest font-bold text-[#a67c00] bg-amber-50 px-3 py-1 rounded-full border border-amber-100 shadow-sm inline-block">
+              Impact & Legacy
+            </span>
+            <h2 className="text-3xl md:text-5xl font-extrabold text-[#581c24] mt-4 mb-4">
+              Stories of Revival & Success
+            </h2>
+            <div className="h-1.5 bg-[#a67c00] mx-auto rounded-full w-24"></div>
+          </div>
+
+          {/* Stories Container / Grid */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14">
+            {/* Success Story 1: Gwalior Royal Revival */}
+            <div className="bg-white rounded-2xl shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 ease-out flex flex-col group overflow-hidden border border-gray-100">
+              {/* Image Container */}
+              <div className="h-64 sm:h-80 w-full overflow-hidden relative">
+                <img
+                  src={img1}
+                  alt="The Royal Revival of Gwalior Carpet"
+                  className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                />
+                {/* Floating Badge */}
+                <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-sm px-4 py-2 rounded-lg text-sm font-bold text-[#581c24] flex items-center gap-2 shadow-lg">
+                 
+                  <HistoryIcon className="w-5 h-5 text-[#581c24]" />
+                  Royal Heritage
+                </div>
+              </div>
+
+              {/* Content Container */}
+              <div className="p-8 md:p-10 flex flex-col flex-1 relative">
+                <div className="absolute top-0 left-0 w-full h-1 bg-gray-100 group-hover:bg-[#581c24] transition-colors duration-500"></div>
+
+                <h3 className="text-2xl md:text-3xl font-extrabold text-gray-900 mb-2 group-hover:text-[#581c24] transition-colors duration-300">
+                  The Royal Revival of Gwalior Carpet
+                </h3>
+                <p className="text-sm font-bold text-[#a67c00] uppercase tracking-wide mb-6">
+                  From Greek Craftsmanship to Indian Heritage
+                </p>
+
+                <p className="text-gray-600 text-sm md:text-base leading-relaxed mb-8 flex-1 text-justify">
+                  The modern identity of Gwalior Carpet was shaped during the
+                  reign of Maharaja Madho Rao Scindia, when a Greek carpet
+                  expert, Stavrides, was invited to Gwalior. He combined
+                  Persian-inspired hand-knotting techniques with the skills of
+                  local artisans, creating a unique weaving ecosystem in the
+                  region.
+                  <br />
+                  <br />
+                  Carpet weaving units were even established inside the Lashkar
+                  Central Jail, where inmates and local craftsmen were trained
+                  in the art of weaving. Over time, Gwalior Carpets gained
+                  recognition among royal households and export markets as
+                  premium handcrafted products. Today, following the{" "}
+                  <span className="font-bold text-[#581c24]">
+                    GI Tag recognition
+                  </span>
+                  , this historic craft is witnessing a revival, with Gwalior
+                  reclaiming its forgotten carpet legacy on the global stage.
+                </p>
+
+                {/* Bottom Read More / Highlight */}
+                <div className="pt-6 border-t border-gray-100 flex items-center justify-between text-sm font-bold text-[#581c24]">
+                  <span className="flex items-center gap-2 bg-rose-50 px-3 py-1.5 rounded-md border border-rose-100">
+                    <ShieldCheck className="w-4 h-4 text-[#a67c00]" /> GI Tagged
+                  </span>
+                  <span className="opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300 flex items-center gap-1 text-sm uppercase tracking-wider text-[#a67c00] cursor-pointer">
+                    Read More <ArrowUpRight className="w-5 h-5" />
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* Success Story 2: Amma Carpets */}
+            <div className="bg-white rounded-2xl shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 ease-out flex flex-col group overflow-hidden border border-gray-100">
+              {/* Image Container */}
+              <div className="h-64 sm:h-80 w-full overflow-hidden relative">
+                <img
+                  src={img2}
+                  alt="Amma Carpets Gwalior Traditional Weaving"
+                  className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                />
+                {/* Floating Badge */}
+                <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-sm px-4 py-2 rounded-lg text-sm font-bold text-[#a67c00] flex items-center gap-2 shadow-lg">
+                  <Star className="w-5 h-5 text-[#a67c00] fill-[#a67c00]" />
+                  Local Pioneer
+                </div>
+              </div>
+              {/* Content Container */}
+              <div className="p-8 md:p-10 flex flex-col flex-1 relative">
+                <div className="absolute top-0 left-0 w-full h-1 bg-gray-100 group-hover:bg-[#a67c00] transition-colors duration-500"></div>
+
+                <h3 className="text-2xl md:text-3xl font-extrabold text-gray-900 mb-2 group-hover:text-[#a67c00] transition-colors duration-300">
+                  Amma Carpets
+                </h3>
+                <p className="text-sm font-bold text-[#581c24] uppercase tracking-wide mb-6">
+                  Preserving Traditions & Digital Outreach
+                </p>
+
+                <p className="text-gray-600 text-sm md:text-base leading-relaxed mb-8 flex-1 text-justify">
+                  Amma Carpets, based in Gwalior, has become one of the
+                  prominent names working to preserve and promote the city’s
+                  traditional hand-knotted carpet heritage. Through generations
+                  of craftsmanship, the company continues to manufacture
+                  handmade woollen and art silk carpets using intricate knotting
+                  techniques inspired by Persian and royal Gwalior designs.
+                  <br />
+                  <br />
+                  Their work highlights the labor-intensive weaving process —
+                  from thread dyeing and loom preparation to detailed
+                  hand-knotting performed by skilled artisans. By combining
+                  traditional craftsmanship with modern market outreach through{" "}
+                  <span className="font-bold text-[#a67c00]">
+                    digital platforms and online storytelling
+                  </span>
+                  , Amma Carpets is helping bring global attention back to
+                  Gwalior’s centuries-old carpet weaving tradition and creating
+                  sustainable livelihood opportunities for local weaver
+                  families.
+                </p>
+
+                {/* Bottom Read More / Highlight */}
+                <div className="pt-6 border-t border-gray-100 flex items-center justify-between text-sm font-bold text-[#581c24]">
+                  <span className="flex items-center gap-2 bg-amber-50 px-3 py-1.5 rounded-md border border-amber-100 text-[#a67c00]">
+                    <TrendingUp className="w-4 h-4" /> Sustainable Growth
+                  </span>
+                  <span className="opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300 flex items-center gap-1 text-sm uppercase tracking-wider text-[#581c24] cursor-pointer">
+                    Read More <ArrowUpRight className="w-5 h-5" />
+                  </span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -1235,9 +1483,7 @@ const CarpetAccelerator = () => {
                   </div>
                   <div>
                     <h4 className="font-bold text-gray-800">Phone</h4>
-                    <p className="text-gray-600 mt-1">
-                     0755 257 7145
-                    </p>
+                    <p className="text-gray-600 mt-1">0755 257 7145</p>
                   </div>
                 </div>
 
@@ -1409,7 +1655,6 @@ const CarpetAccelerator = () => {
                 <li className="flex items-center gap-2">
                   <Phone className="w-4 h-4 text-[#a67c00]" /> 0755-2577145
                 </li>
-               
               </ul>
             </div>
 
