@@ -1199,7 +1199,7 @@ const CarpetAccelerator = () => {
                         Value-added products (if any): Please mention <br />
                         <span className="text-xs text-gray-500 font-normal">
                           (मूल्य संवर्धित उत्पाद (यदि कोई हों): कृपया उल्लेख
-                          करें।)
+                          करें।)  <span className="text-red-500">*</span>
                         </span>
                       </label>
                       <input
@@ -1217,7 +1217,7 @@ const CarpetAccelerator = () => {
                         Social media page or GI tag details <br />
                         <span className="text-xs text-gray-500 font-normal">
                           (यदि आपके पास कोई सोशल मीडिया पेज है या जीआई टैग है,
-                          तो उसका उल्लेख करें।)
+                          तो उसका उल्लेख करें।)  <span className="text-red-500">*</span>
                         </span>
                       </label>
                       <input
@@ -1235,7 +1235,7 @@ const CarpetAccelerator = () => {
                       {/* Question 1: Export? */}
                       <div>
                         <label className="block text-sm font-semibold text-gray-700 mb-3">
-                          Do you export to other countries?
+                          Do you export to other countries?  <span className="text-red-500">*</span>
                         </label>
                         <div className="flex gap-6">
                           <label className="flex items-center gap-2 cursor-pointer">
@@ -1391,10 +1391,12 @@ const CarpetAccelerator = () => {
 
                       <div>
                         <label className="block text-sm font-semibold text-gray-700 mb-2">
-                          Pan Card (पैन कार्ड चित्र)
+                          Pan Card (पैन कार्ड चित्र)  <span className="text-red-500">*</span>
                         </label>
+                         {/* <span className="text-red-500">*</span> */}
                         <input
                           type="file"
+                           required
                           accept="image/*,.pdf"
                           onChange={(e) => handleFileChange(e, "panCard")}
                           className="block w-full text-sm text-gray-500 file:mr-4 file:py-2.5 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-[#f5ebd9] file:text-[#581c24] hover:file:bg-[#e6d5bc] transition-all border border-gray-300 rounded-lg"
@@ -1403,10 +1405,11 @@ const CarpetAccelerator = () => {
 
                       <div>
                         <label className="block text-sm font-semibold text-gray-700 mb-2">
-                          Products manufactured (निर्मित उत्पाद)
+                          Products manufactured (निर्मित उत्पाद)  <span className="text-red-500">*</span>
                         </label>
                         <input
                           type="file"
+                          required
                           accept="image/*,.pdf"
                           onChange={(e) => handleFileChange(e, "productsImage")}
                           className="block w-full text-sm text-gray-500 file:mr-4 file:py-2.5 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-[#f5ebd9] file:text-[#581c24] hover:file:bg-[#e6d5bc] transition-all border border-gray-300 rounded-lg"
@@ -1415,10 +1418,11 @@ const CarpetAccelerator = () => {
 
                       <div>
                         <label className="block text-sm font-semibold text-gray-700 mb-2">
-                          Company's brochure or catalogue
+                          Company's brochure or catalogue  <span className="text-red-500">*</span>
                         </label>
                         <input
                           type="file"
+                          required
                           accept="image/*,.pdf"
                           onChange={(e) => handleFileChange(e, "brochure")}
                           className="block w-full text-sm text-gray-500 file:mr-4 file:py-2.5 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-[#f5ebd9] file:text-[#581c24] hover:file:bg-[#e6d5bc] transition-all border border-gray-300 rounded-lg"
@@ -1427,10 +1431,11 @@ const CarpetAccelerator = () => {
 
                       <div>
                         <label className="block text-sm font-semibold text-gray-700 mb-2">
-                          Image of Social Media Page or GI Tag
+                          Image of Social Media Page or GI Tag  /  <span className="text-red-500">*</span>
                         </label>
                         <input
                           type="file"
+                          required
                           accept="image/*,.pdf"
                           onChange={(e) =>
                             handleFileChange(e, "socialMediaImage")
@@ -1441,10 +1446,11 @@ const CarpetAccelerator = () => {
 
                       <div>
                         <label className="block text-sm font-semibold text-gray-700 mb-2">
-                          Other Above Mentioned documents (PDF)
+                         IEC Certificate / Udyam  (यदि निर्यातक हैं)  <span className="text-red-500">*</span>
                         </label>
                         <input
                           type="file"
+                          
                           accept="image/*,.pdf"
                           onChange={(e) => handleFileChange(e, "otherDocs")}
                           className="block w-full text-sm text-gray-500 file:mr-4 file:py-2.5 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-[#f5ebd9] file:text-[#581c24] hover:file:bg-[#e6d5bc] transition-all border border-gray-300 rounded-lg"
