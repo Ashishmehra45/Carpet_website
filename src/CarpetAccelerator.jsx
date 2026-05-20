@@ -1383,6 +1383,7 @@ const CarpetAccelerator = () => {
                         <input
                           type="file"
                           required
+                          accept="image/*,.pdf"
                           onChange={(e) => handleFileChange(e, "aadharCard")}
                           className="block w-full text-sm text-gray-500 file:mr-4 file:py-2.5 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-[#f5ebd9] file:text-[#581c24] hover:file:bg-[#e6d5bc] transition-all border border-gray-300 rounded-lg"
                         />
@@ -1394,6 +1395,7 @@ const CarpetAccelerator = () => {
                         </label>
                         <input
                           type="file"
+                          accept="image/*,.pdf"
                           onChange={(e) => handleFileChange(e, "panCard")}
                           className="block w-full text-sm text-gray-500 file:mr-4 file:py-2.5 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-[#f5ebd9] file:text-[#581c24] hover:file:bg-[#e6d5bc] transition-all border border-gray-300 rounded-lg"
                         />
@@ -1405,6 +1407,7 @@ const CarpetAccelerator = () => {
                         </label>
                         <input
                           type="file"
+                          accept="image/*,.pdf"
                           onChange={(e) => handleFileChange(e, "productsImage")}
                           className="block w-full text-sm text-gray-500 file:mr-4 file:py-2.5 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-[#f5ebd9] file:text-[#581c24] hover:file:bg-[#e6d5bc] transition-all border border-gray-300 rounded-lg"
                         />
@@ -1416,6 +1419,7 @@ const CarpetAccelerator = () => {
                         </label>
                         <input
                           type="file"
+                          accept="image/*,.pdf"
                           onChange={(e) => handleFileChange(e, "brochure")}
                           className="block w-full text-sm text-gray-500 file:mr-4 file:py-2.5 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-[#f5ebd9] file:text-[#581c24] hover:file:bg-[#e6d5bc] transition-all border border-gray-300 rounded-lg"
                         />
@@ -1427,6 +1431,7 @@ const CarpetAccelerator = () => {
                         </label>
                         <input
                           type="file"
+                          accept="image/*,.pdf"
                           onChange={(e) =>
                             handleFileChange(e, "socialMediaImage")
                           }
@@ -1440,7 +1445,7 @@ const CarpetAccelerator = () => {
                         </label>
                         <input
                           type="file"
-                          accept=".pdf"
+                          accept="image/*,.pdf"
                           onChange={(e) => handleFileChange(e, "otherDocs")}
                           className="block w-full text-sm text-gray-500 file:mr-4 file:py-2.5 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-[#f5ebd9] file:text-[#581c24] hover:file:bg-[#e6d5bc] transition-all border border-gray-300 rounded-lg"
                         />
