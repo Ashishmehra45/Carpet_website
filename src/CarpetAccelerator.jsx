@@ -295,13 +295,20 @@ const CarpetAccelerator = () => {
             <div className="flex items-center gap-4 py-4 px-2">
               <div className="flex flex-col">
                 <h1 className="text-2xl font-bold text-gray-900 tracking-tight leading-none">
-                  Carpet <span className="text-[#a67c00]">Accelerator</span>
+                  <a href="#Home">Carpet <span className="text-[#a67c00]">Accelerator</span></a>  
                 </h1>
               </div>
             </div>
 
             {/* Desktop Navigation */}
             <div className="hidden lg:flex space-x-8 text-sm font-semibold text-[#333333]">
+               <a
+                href="#Home"
+                className="hover:text-[#a67c00] transition-colors"
+              >
+                Home
+              </a>
+
               <a
                 href="#about"
                 className="hover:text-[#a67c00] transition-colors"
@@ -408,7 +415,7 @@ const CarpetAccelerator = () => {
       </nav>
 
       {/* 2. Hero Section */}
-      <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-black">
+      <section id="Home" className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-black">
         {/* Rich Traditional Rug Texture */}
         <div
           className="absolute inset-0 bg-cover bg-center "
@@ -425,8 +432,8 @@ const CarpetAccelerator = () => {
           <span className="inline-block py-1 px-3 rounded-full bg-[#a67c00]/30 text-[#f5ebd9] border border-[#a67c00]/60 text-sm font-semibold tracking-wider mb-6 backdrop-blur-sm shadow-lg">
             Initiative of MP Industrial Development Corporation
           </span>
-          <h1 className="text-5xl md:text-7xl font-extrabold text-white tracking-tight mb-4 drop-shadow-xl">
-            Carpet Accelerator
+          <h1  className="text-5xl md:text-7xl font-extrabold text-white tracking-tight mb-4 drop-shadow-xl">
+            Carpet Accelerator 
           </h1>
           <h2 className="text-2xl md:text-3xl font-medium text-[#f5ebd9] mb-8 tracking-wide uppercase drop-shadow-lg">
             From Royal Courts To Global Homes
