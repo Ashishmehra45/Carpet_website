@@ -1,33 +1,10 @@
 import React, { useState } from "react";
 import {
-  Globe,
-  ArrowUpRight,
-  History as HistoryIcon,
-  ShieldCheck,
-  Info,ClipboardCheck,
-  CalendarDays,
-  Gift,
-  HelpCircle,
-  Package,
-  TrendingUp,
-  Users,
-  Award,
-  Monitor,
-  CheckCircle,
-  ChevronDown,
-  ChevronUp,
-  MapPin,
-  Phone,
-  Mail,
-  ArrowRight,
-  ArrowLeft,
-  Star,
-  Briefcase,
-  Lightbulb,
-  ShoppingBag,
-  Send,
-  Menu,
-  X,
+  Globe, ArrowUpRight, History as HistoryIcon, ShieldCheck, Info,
+  ClipboardCheck, CalendarDays, Gift, HelpCircle, Package, TrendingUp,
+  Users, Award, Monitor, CheckCircle, ChevronDown, ChevronUp, MapPin,
+  Phone, Mail, ArrowRight, ArrowLeft, Star, Briefcase, Lightbulb,
+  ShoppingBag, Send, Menu, X, Gem // <-- Yahan Gem add kiya hai
 } from "lucide-react";
 import logo from "/MPIDCUPDATEDLOGO.png";
 import { Toaster, toast } from "react-hot-toast";
@@ -36,81 +13,231 @@ import axios from "axios";
 import Mp_map from "/MP-Map.png";
 import img1 from "/01.webp";
 import img2 from "/03.jpg";
+import img3 from "/public/productsImage-1779198224489.jpg.jpeg";
+import img4 from "/public/brochure-1779361607407.jpg.jpeg";
+import img5 from "/public/Khandelwal.jpeg";
+import pdf1 from "/public/pdf/Amma_Carpets_Success_Story.pdf";
+import pdf2 from "/public/pdf/Navratan_Carpets_Success_Story.pdf";
+import pdf3 from "/public/pdf/Anuradha_Trading_Company_Success_Story.pdf";
+import pdf5 from "/public/pdf/Khandelwal_Carpets_Success_Story_v2.pdf";
 
 const CarpetAccelerator = () => {
   const [activeStep, setActiveStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  const [activeTab, setActiveTab] = useState('about');
+  const [activeTab, setActiveTab] = useState("about");
   const [openFaqIndex, setOpenFaqIndex] = useState(null);
 
   // Tabs structure metadata
   const tabs = [
-    { id: 'about', label: 'About the Program', icon: Info, color: '#581c24' },
-    { id: 'eligibility', label: 'Eligibility & Application', icon: ClipboardCheck, color: '#a67c00' },
-    { id: 'details', label: 'Program Details', icon: CalendarDays, color: '#581c24' },
-    { id: 'benefits', label: 'Benefits & Outcomes', icon: Gift, color: '#a67c00' },
+    { id: "about", label: "About the Program", icon: Info, color: "#581c24" },
+    {
+      id: "eligibility",
+      label: "Eligibility & Application",
+      icon: ClipboardCheck,
+      color: "#a67c00",
+    },
+    {
+      id: "details",
+      label: "Program Details",
+      icon: CalendarDays,
+      color: "#581c24",
+    },
+    {
+      id: "benefits",
+      label: "Benefits & Outcomes",
+      icon: Gift,
+      color: "#a67c00",
+    },
   ];
+
+  const storiesData = [
+   
+    {
+      id: 2,
+      imgSrc: img2, // Add img2 path here
+      pdfLink: pdf1, // Add pdf2 path here
+      badgeIcon: Star,
+      badgeText: "Local Pioneer",
+      badgeColor: "text-[#a67c00]",
+      badgeIconExtraClass: "fill-[#a67c00]",
+      topBorderHover: "group-hover:bg-[#a67c00]",
+      title: "Amma Carpets",
+      titleHover: "group-hover:text-[#a67c00]",
+      subtitle: "Preserving Traditions & Digital Outreach",
+      subtitleColor: "text-[#581c24]",
+      descStart:
+        "Amma Carpets preserves Gwalior’s hand-knotted carpet heritage, crafting premium woollen and art silk pieces with intricate Persian designs. By blending generational craftsmanship with ",
+      descHighlight: "modern digital outreach",
+      descHighlightColor: "text-[#a67c00]",
+      descEnd:
+        ", they are reviving global interest in Gwalior's weaving traditions while sustaining local artisan livelihoods.",
+      bottomBadgeBg: "bg-amber-50 border-amber-100",
+      bottomIcon: TrendingUp,
+      bottomIconColor: "",
+      bottomText: "Sustainable Growth",
+      bottomTextColor: "text-[#a67c00]",
+      btnClass: "bg-[#a67c00] hover:bg-[#856300]",
+    },
+    {
+      id: 3,
+      imgSrc: img3, // Add img3 path here
+      pdfLink: pdf2, // Add pdf3 path here
+      badgeIcon: Award,
+      badgeText: "Heritage Builders",
+      badgeColor: "text-[#0f766e]",
+      topBorderHover: "group-hover:bg-[#0f766e]",
+      title: "Navratan Carpets",
+      titleHover: "group-hover:text-[#0f766e]",
+      subtitle: "Preserving Heritage, Empowering Artisans",
+      subtitleColor: "text-[#0f766e]",
+      descStart:
+        "Navratan Carpets is dedicated to preserving Gwalior’s hand-knotted carpet legacy, manufacturing premium woollen and art silk carpets inspired by Persian artistry. Through ",
+      descHighlight: "global marketing platforms",
+      descHighlightColor: "text-[#0f766e]",
+      descEnd:
+        ", they bring international recognition to Gwalior while empowering local weaving families with sustainable livelihoods.",
+      bottomBadgeBg: "bg-teal-50 border-teal-100",
+      bottomIcon: Globe,
+      bottomIconColor: "",
+      bottomText: "Global Reach",
+      bottomTextColor: "text-[#0f766e]",
+      btnClass: "bg-[#0f766e] hover:bg-[#0d5e58]",
+    },
+    {
+      id: 4,
+      imgSrc: img4, // Add img4 path here
+      pdfLink: pdf3, // Add pdf4 path here
+      badgeIcon: Gem,
+      badgeText: "Global Excellence",
+      badgeColor: "text-[#1e40af]", // Deep Blue theme for Anuradha
+      topBorderHover: "group-hover:bg-[#1e40af]",
+      title: "Anuradha Trading Company",
+      titleHover: "group-hover:text-[#1e40af]",
+      subtitle: "Weaving Tradition into Global Excellence",
+      subtitleColor: "text-[#1e40af]",
+      descStart:
+        "Anuradha Trading Company has grown from a small trading venture into a trusted manufacturer of premium handmade woollen carpets. Blending traditional weaving techniques with modern aesthetics and  Today, the company is recognized as a reliable manufacturer and supplier of handcrafted woollen carpets, known for timely delivery, customized orders, and customer satisfaction. Their journey represents the growth of traditional craftsmanship into a successful business that supports local artisans and promotes India’s carpet heritage worldwide. ",
+      descHighlight: "customized global supply",
+      descHighlightColor: "text-[#1e40af]",
+      descEnd:
+        ", they champion India's carpet heritage while ensuring sustainable livelihoods for skilled local artisans.",
+      bottomBadgeBg: "bg-blue-50 border-blue-100",
+      bottomIcon: Briefcase,
+      bottomIconColor: "",
+      bottomText: "Trusted Supplier",
+      bottomTextColor: "text-[#1e40af]",
+      btnClass: "bg-[#1e40af] hover:bg-[#1e3a8a]",
+    },
+    //  {
+    //   id: 1,
+    //   imgSrc: img1, // Add img1 path here
+    //   // pdfLink: , // Add pdf1 path here
+    //   badgeIcon: HistoryIcon,
+    //   badgeText: "Royal Heritage",
+    //   badgeColor: "text-[#581c24]",
+    //   topBorderHover: "group-hover:bg-[#581c24]",
+    //   title: "The Royal Revival of Gwalior Carpet",
+    //   titleHover: "group-hover:text-[#581c24]",
+    //   subtitle: "From Greek Craftsmanship to Indian Heritage",
+    //   subtitleColor: "text-[#a67c00]",
+    //   descStart:
+    //     "The modern identity of Gwalior Carpet was shaped by Maharaja Madho Rao Scindia and Greek expert Stavrides, blending Persian hand-knotting with local skills. Once woven in Lashkar Central Jail, these premium carpets reached royal households globally. Today, with its ",
+    //   descHighlight: "GI Tag recognition",
+    //   descHighlightColor: "text-[#581c24]",
+    //   descEnd: ", this historic craft is witnessing a global revival.",
+    //   bottomBadgeBg: "bg-rose-50 border-rose-100",
+    //   bottomIcon: ShieldCheck,
+    //   bottomIconColor: "text-[#a67c00]",
+    //   bottomText: "GI Tagged",
+    //   bottomTextColor: "text-[#581c24]",
+    //   btnClass: "bg-[#581c24] hover:bg-[#3d1319]",
+    // },
+   {
+  id: 5,
+  imgSrc: img5, // Yahan apna imported image variable check kar lena
+  pdfLink: pdf5, // Yahan apna brochure/pdf path map kar lena
+  badgeIcon: Monitor, // Tum chaho toh isko 'Award' ya 'Sparkles' se replace kar sakte ho
+  badgeText: "Heritage Craftsmanship",
+  badgeColor: "text-[#059669]", // Emerald / Green theme maintained
+  topBorderHover: "group-hover:bg-[#059669]",
+  title: "Khandelwal Carpets",
+  titleHover: "group-hover:text-[#059669]",
+  subtitle: "Transforming Craftsmanship through Job Work Manufacturing",
+  subtitleColor: "text-[#059669]",
+  descStart:
+    "Khandelwal Carpets has built its identity in the carpet industry through consistent quality, skilled craftsmanship, and a strong commitment to job work manufacturing. Specializing in handmade carpet production, the company has become a reliable manufacturing partner for businesses seeking premium carpet craftsmanship and timely execution. By working closely with skilled artisans, they deliver customized production solutions while maintaining superior quality standards and ",
+  descHighlight: "preserving India’s rich carpet weaving heritage",
+  descHighlightColor: "text-[#059669]",
+  descEnd: " and generating sustainable employment opportunities for local craftsmen.",
+  bottomBadgeBg: "bg-green-50 border-green-100",
+  bottomIcon: Globe,
+  bottomIconColor: "text-[#059669]",
+  bottomText: "Premium Job Work Partner",
+  bottomTextColor: "text-[#059669]",
+  btnClass: "bg-[#059669] hover:bg-[#047857]",
+}
+      ];
 
   // Dynamic FAQ Content mapped with each Tab ID
   const faqData = {
     about: [
       {
         q: "What is the Carpet Accelerator?",
-        a: "The Carpet Accelerator is a flagship growth initiative designed to scale traditional weavers, master artisans, and carpet manufacturers into global brands through design innovation, digital onboarding, and export handholding."
+        a: "The Carpet Accelerator is a flagship growth initiative designed to scale traditional weavers, master artisans, and carpet manufacturers into global brands through design innovation, digital onboarding, and export handholding.",
       },
       {
         q: 'What does "From Local Weaves to Global Markets" mean?',
-        a: "It represents our core mission: taking traditional hand-knotted heritage, modernizing its supply chain, enhancing quality/packaging benchmarks, and establishing direct linkages with international buyers."
+        a: "It represents our core mission: taking traditional hand-knotted heritage, modernizing its supply chain, enhancing quality/packaging benchmarks, and establishing direct linkages with international buyers.",
       },
       {
         q: "How long does the program run?",
-        a: "The standard cohort duration is 12 weeks, which includes intense technical modules, design masterclasses, digital asset creation workshops, and direct export B2B matchmaking sessions."
+        a: "The standard cohort duration is 12 weeks, which includes intense technical modules, design masterclasses, digital asset creation workshops, and direct export B2B matchmaking sessions.",
       },
       {
         q: "Is there a cost to participate in the program?",
-        a: "No, this program is fully sponsored to uplift the artisan ecosystem. There are zero enrollment or training fees for selected participants."
-      }
+        a: "No, this program is fully sponsored to uplift the artisan ecosystem. There are zero enrollment or training fees for selected participants.",
+      },
     ],
     eligibility: [
       {
         q: "Who is eligible to apply for this accelerator?",
-        a: "Carpet weavers, hand-knotted artisans, loom operators, micro-entrepreneurs, existing exporters, and cooperative societies based out of target weaving clusters can apply."
+        a: "Carpet weavers, hand-knotted artisans, loom operators, micro-entrepreneurs, existing exporters, and cooperative societies based out of target weaving clusters can apply.",
       },
       {
         q: "What documents are required during application?",
-        a: "You need to submit your Aadhaar Card, PAN Card, Company Registration details (if available), current product profile photographs, and existing business catalogs."
+        a: "You need to submit your Aadhaar Card, PAN Card, Company Registration details (if available), current product profile photographs, and existing business catalogs.",
       },
       {
         q: "Can individual weavers apply or only registered firms?",
-        a: "Both can apply! Individual master weavers looking to build their brand receive customized training, while established firms are fast-tracked toward advanced export readiness frameworks."
-      }
+        a: "Both can apply! Individual master weavers looking to build their brand receive customized training, while established firms are fast-tracked toward advanced export readiness frameworks.",
+      },
     ],
     details: [
       {
         q: "Where will the training modules be conducted?",
-        a: "The program uses a hybrid approach: technical layout training and buyer matchmaking happen digitally, while design workshops and loom assessments are held directly within major cluster centers."
+        a: "The program uses a hybrid approach: technical layout training and buyer matchmaking happen digitally, while design workshops and loom assessments are held directly within major cluster centers.",
       },
       {
         q: "What specific domains are covered under design innovation?",
-        a: "We cover contemporary color palette forecasting, Persian vs. modern geometric design mapping, yarn optimization, standard quality control metrics, and elite premium transit-safe packaging."
+        a: "We cover contemporary color palette forecasting, Persian vs. modern geometric design mapping, yarn optimization, standard quality control metrics, and elite premium transit-safe packaging.",
       },
       {
         q: "Will there be real-time market access opportunities?",
-        a: "Yes, top-performing cohort members get direct matchmaking invites with corporate buyers, bulk B2B purchase groups, international aggregators, and curated trade fairs."
-      }
+        a: "Yes, top-performing cohort members get direct matchmaking invites with corporate buyers, bulk B2B purchase groups, international aggregators, and curated trade fairs.",
+      },
     ],
     benefits: [
       {
         q: "What tangible assets will I get after completion?",
-        a: "Participants receive custom digital catalog development support, verified company registration guidance, setup assistance for secure global payment systems, and direct access to trade infrastructure."
+        a: "Participants receive custom digital catalog development support, verified company registration guidance, setup assistance for secure global payment systems, and direct access to trade infrastructure.",
       },
       {
         q: "How does the program help with export documentations?",
-        a: "We provide step-by-step documentation handholding, including guidance on obtaining an IEC (Importer Exporter Code), custom clearance routing parameters, and international regulatory compliance certificates."
-      }
-    ]
+        a: "We provide step-by-step documentation handholding, including guidance on obtaining an IEC (Importer Exporter Code), custom clearance routing parameters, and international regulatory compliance certificates.",
+      },
+    ],
   };
 
   // Helper function to handle tab switches clean
@@ -295,14 +422,16 @@ const CarpetAccelerator = () => {
             <div className="flex items-center gap-4 py-4 px-2">
               <div className="flex flex-col">
                 <h1 className="text-2xl font-bold text-gray-900 tracking-tight leading-none">
-                  <a href="#Home">Carpet <span className="text-[#a67c00]">Accelerator</span></a>  
+                  <a href="#Home">
+                    Carpet <span className="text-[#a67c00]">Accelerator</span>
+                  </a>
                 </h1>
               </div>
             </div>
 
             {/* Desktop Navigation */}
             <div className="hidden lg:flex space-x-8 text-sm font-semibold text-[#333333]">
-               <a
+              <a
                 href="#Home"
                 className="hover:text-[#a67c00] transition-colors"
               >
@@ -415,7 +544,10 @@ const CarpetAccelerator = () => {
       </nav>
 
       {/* 2. Hero Section */}
-      <section id="Home" className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-black">
+      <section
+        id="Home"
+        className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-black"
+      >
         {/* Rich Traditional Rug Texture */}
         <div
           className="absolute inset-0 bg-cover bg-center "
@@ -432,8 +564,8 @@ const CarpetAccelerator = () => {
           <span className="inline-block py-1 px-3 rounded-full bg-[#a67c00]/30 text-[#f5ebd9] border border-[#a67c00]/60 text-sm font-semibold tracking-wider mb-6 backdrop-blur-sm shadow-lg">
             Initiative of MP Industrial Development Corporation
           </span>
-          <h1  className="text-5xl md:text-7xl font-extrabold text-white tracking-tight mb-4 drop-shadow-xl">
-            Carpet Accelerator 
+          <h1 className="text-5xl md:text-7xl font-extrabold text-white tracking-tight mb-4 drop-shadow-xl">
+            Carpet Accelerator
           </h1>
           <h2 className="text-2xl md:text-3xl font-medium text-[#f5ebd9] mb-8 tracking-wide uppercase drop-shadow-lg">
             From Royal Courts To Global Homes
@@ -866,121 +998,96 @@ const CarpetAccelerator = () => {
             <div className="h-1.5 bg-[#a67c00] mx-auto rounded-full w-24"></div>
           </div>
 
-          {/* Stories Container / Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14">
-            {/* Success Story 1: Gwalior Royal Revival */}
-            <div className="bg-white rounded-2xl shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 ease-out flex flex-col group overflow-hidden border border-gray-100">
-              {/* Image Container */}
-              <div className="h-64 sm:h-80 w-full overflow-hidden relative">
-                <img
-                  src={img1}
-                  alt="The Royal Revival of Gwalior Carpet"
-                  className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
-                />
-                {/* Floating Badge */}
-                <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-sm px-4 py-2 rounded-lg text-sm font-bold text-[#581c24] flex items-center gap-2 shadow-lg">
-                  <HistoryIcon className="w-5 h-5 text-[#581c24]" />
-                  Royal Heritage
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 lg:gap-12">
+            {storiesData.map((story) => {
+              const BadgeIcon = story.badgeIcon;
+              const BottomIcon = story.bottomIcon;
+
+              return (
+                <div
+                  key={story.id}
+                  className="bg-white rounded-2xl shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 ease-out flex flex-col group overflow-hidden border border-gray-100"
+                >
+                  {/* Image Container */}
+                  <div className="h-56 sm:h-70 w-full overflow-hidden relative bg-gray-200">
+                    <img
+                      src={story.imgSrc}
+                      alt={story.title}
+                      className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                    />
+                    <div
+                      className={`absolute top-4 left-4 bg-white/95 backdrop-blur-sm px-4 py-2 rounded-lg text-sm font-bold ${story.badgeColor} flex items-center gap-2 shadow-lg`}
+                    >
+                      <BadgeIcon
+                        className={`w-4 h-4 ${story.badgeColor} ${story.badgeIconExtraClass || ""}`}
+                      />
+                      {story.badgeText}
+                    </div>
+                  </div>
+
+                  {/* Content Container */}
+                  <div className="p-6 md:p-8 flex flex-col flex-1 relative">
+                    <div
+                      className={`absolute top-0 left-0 w-full h-1 bg-gray-100 ${story.topBorderHover} transition-colors duration-500`}
+                    ></div>
+
+                    <h3
+                      className={`text-xl md:text-2xl font-extrabold text-gray-900 mb-2 ${story.titleHover} transition-colors duration-300`}
+                    >
+                      {story.title}
+                    </h3>
+                    <p
+                      className={`text-xs font-bold ${story.subtitleColor} uppercase tracking-wide mb-4`}
+                    >
+                      {story.subtitle}
+                    </p>
+
+                    <p className="text-gray-600 text-semibold leading-relaxed mb-6 flex-1 text-justify">
+                      {story.descStart}
+                      <span className={`font-bold ${story.descHighlightColor}`}>
+                        {story.descHighlight}
+                      </span>
+                      {story.descEnd}
+                    </p>
+
+                   {/* Bottom Actions */}
+                    <div className="pt-5 border-t border-gray-100 flex flex-col gap-4">
+                      <div
+                        className={`flex items-center justify-between text-sm font-bold ${story.bottomTextColor}`}
+                      >
+                        <span
+                          className={`flex items-center gap-2 px-3 py-1.5 rounded-md border ${story.bottomBadgeBg}`}
+                        >
+                          <BottomIcon
+                            className={`w-4 h-4 ${story.bottomIconColor}`}
+                          />
+                          {story.bottomText}
+                        </span>
+                      </div>
+
+                      {/* Conditional Rendering for PDF Link */}
+                      {story.pdfLink ? (
+                        <a
+                          href={story.pdfLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={`w-full text-center text-white py-2.5 rounded-lg text-sm font-bold transition-colors duration-300 shadow-md hover:shadow-lg ${story.btnClass}`}
+                        >
+                          View Profile
+                        </a>
+                      ) : (
+                        <button
+                          disabled
+                          className="w-full text-center bg-gray-100 text-gray-400 py-2.5 rounded-lg text-sm font-bold cursor-not-allowed border border-gray-200"
+                        >
+                          Profile Coming Soon
+                        </button>
+                      )}
+                    </div>
+                  </div>
                 </div>
-              </div>
-
-              {/* Content Container */}
-              <div className="p-8 md:p-10 flex flex-col flex-1 relative">
-                <div className="absolute top-0 left-0 w-full h-1 bg-gray-100 group-hover:bg-[#581c24] transition-colors duration-500"></div>
-
-                <h3 className="text-2xl md:text-3xl font-extrabold text-gray-900 mb-2 group-hover:text-[#581c24] transition-colors duration-300">
-                  The Royal Revival of Gwalior Carpet
-                </h3>
-                <p className="text-sm font-bold text-[#a67c00] uppercase tracking-wide mb-6">
-                  From Greek Craftsmanship to Indian Heritage
-                </p>
-
-                <p className="text-gray-600 text-sm md:text-base leading-relaxed mb-8 flex-1 text-justify">
-                  The modern identity of Gwalior Carpet was shaped during the
-                  reign of Maharaja Madho Rao Scindia, when a Greek carpet
-                  expert, Stavrides, was invited to Gwalior. He combined
-                  Persian-inspired hand-knotting techniques with the skills of
-                  local artisans, creating a unique weaving ecosystem in the
-                  region.
-                  <br />
-                  <br />
-                  Carpet weaving units were even established inside the Lashkar
-                  Central Jail, where inmates and local craftsmen were trained
-                  in the art of weaving. Over time, Gwalior Carpets gained
-                  recognition among royal households and export markets as
-                  premium handcrafted products. Today, following the{" "}
-                  <span className="font-bold text-[#581c24]">
-                    GI Tag recognition
-                  </span>
-                  , this historic craft is witnessing a revival, with Gwalior
-                  reclaiming its forgotten carpet legacy on the global stage.
-                </p>
-
-                {/* Bottom Read More / Highlight */}
-                <div className="pt-6 border-t border-gray-100 flex items-center justify-between text-sm font-bold text-[#581c24]">
-                  <span className="flex items-center gap-2 bg-rose-50 px-3 py-1.5 rounded-md border border-rose-100">
-                    <ShieldCheck className="w-4 h-4 text-[#a67c00]" /> GI Tagged
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            {/* Success Story 2: Amma Carpets */}
-            <div className="bg-white rounded-2xl shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 ease-out flex flex-col group overflow-hidden border border-gray-100">
-              {/* Image Container */}
-              <div className="h-64 sm:h-80 w-full overflow-hidden relative">
-                <img
-                  src={img2}
-                  alt="Amma Carpets Gwalior Traditional Weaving"
-                  className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
-                />
-                {/* Floating Badge */}
-                <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-sm px-4 py-2 rounded-lg text-sm font-bold text-[#a67c00] flex items-center gap-2 shadow-lg">
-                  <Star className="w-5 h-5 text-[#a67c00] fill-[#a67c00]" />
-                  Local Pioneer
-                </div>
-              </div>
-              {/* Content Container */}
-              <div className="p-8 md:p-10 flex flex-col flex-1 relative">
-                <div className="absolute top-0 left-0 w-full h-1 bg-gray-100 group-hover:bg-[#a67c00] transition-colors duration-500"></div>
-
-                <h3 className="text-2xl md:text-3xl font-extrabold text-gray-900 mb-2 group-hover:text-[#a67c00] transition-colors duration-300">
-                  Amma Carpets
-                </h3>
-                <p className="text-sm font-bold text-[#581c24] uppercase tracking-wide mb-6">
-                  Preserving Traditions & Digital Outreach
-                </p>
-
-                <p className="text-gray-600 text-sm md:text-base leading-relaxed mb-8 flex-1 text-justify">
-                  Amma Carpets, based in Gwalior, has become one of the
-                  prominent names working to preserve and promote the city’s
-                  traditional hand-knotted carpet heritage. Through generations
-                  of craftsmanship, the company continues to manufacture
-                  handmade woollen and art silk carpets using intricate knotting
-                  techniques inspired by Persian and royal Gwalior designs.
-                  <br />
-                  <br />
-                  Their work highlights the labor-intensive weaving process —
-                  from thread dyeing and loom preparation to detailed
-                  hand-knotting performed by skilled artisans. By combining
-                  traditional craftsmanship with modern market outreach through{" "}
-                  <span className="font-bold text-[#a67c00]">
-                    digital platforms and online storytelling
-                  </span>
-                  , Amma Carpets is helping bring global attention back to
-                  Gwalior’s centuries-old carpet weaving tradition and creating
-                  sustainable livelihood opportunities for local weaver
-                  families.
-                </p>
-
-                {/* Bottom Read More / Highlight */}
-                <div className="pt-6 border-t border-gray-100 flex items-center justify-between text-sm font-bold text-[#581c24]">
-                  <span className="flex items-center gap-2 bg-amber-50 px-3 py-1.5 rounded-md border border-amber-100 text-[#a67c00]">
-                    <TrendingUp className="w-4 h-4" /> Sustainable Growth
-                  </span>
-                </div>
-              </div>
-            </div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -1206,7 +1313,7 @@ const CarpetAccelerator = () => {
                         Value-added products (if any): Please mention <br />
                         <span className="text-xs text-gray-500 font-normal">
                           (मूल्य संवर्धित उत्पाद (यदि कोई हों): कृपया उल्लेख
-                          करें।)  <span className="text-red-500">*</span>
+                          करें।) <span className="text-red-500">*</span>
                         </span>
                       </label>
                       <input
@@ -1224,7 +1331,8 @@ const CarpetAccelerator = () => {
                         Social media page or GI tag details <br />
                         <span className="text-xs text-gray-500 font-normal">
                           (यदि आपके पास कोई सोशल मीडिया पेज है या जीआई टैग है,
-                          तो उसका उल्लेख करें।)  <span className="text-red-500">*</span>
+                          तो उसका उल्लेख करें।){" "}
+                          <span className="text-red-500">*</span>
                         </span>
                       </label>
                       <input
@@ -1242,7 +1350,8 @@ const CarpetAccelerator = () => {
                       {/* Question 1: Export? */}
                       <div>
                         <label className="block text-sm font-semibold text-gray-700 mb-3">
-                          Do you export to other countries?  <span className="text-red-500">*</span>
+                          Do you export to other countries?{" "}
+                          <span className="text-red-500">*</span>
                         </label>
                         <div className="flex gap-6">
                           <label className="flex items-center gap-2 cursor-pointer">
@@ -1389,7 +1498,6 @@ const CarpetAccelerator = () => {
                         </label>
                         <input
                           type="file"
-                          
                           accept="image/*,.pdf"
                           onChange={(e) => handleFileChange(e, "aadharCard")}
                           className="block w-full text-sm text-gray-500 file:mr-4 file:py-2.5 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-[#f5ebd9] file:text-[#581c24] hover:file:bg-[#e6d5bc] transition-all border border-gray-300 rounded-lg"
@@ -1398,12 +1506,12 @@ const CarpetAccelerator = () => {
 
                       <div>
                         <label className="block text-sm font-semibold text-gray-700 mb-2">
-                          Pan Card (पैन कार्ड चित्र)  <span className="text-red-500">*</span>
+                          Pan Card (पैन कार्ड चित्र){" "}
+                          <span className="text-red-500">*</span>
                         </label>
-                         {/* <span className="text-red-500">*</span> */}
+                        {/* <span className="text-red-500">*</span> */}
                         <input
                           type="file"
-                           
                           accept="image/*,.pdf"
                           onChange={(e) => handleFileChange(e, "panCard")}
                           className="block w-full text-sm text-gray-500 file:mr-4 file:py-2.5 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-[#f5ebd9] file:text-[#581c24] hover:file:bg-[#e6d5bc] transition-all border border-gray-300 rounded-lg"
@@ -1412,11 +1520,11 @@ const CarpetAccelerator = () => {
 
                       <div>
                         <label className="block text-sm font-semibold text-gray-700 mb-2">
-                          Products manufactured (निर्मित उत्पाद)  <span className="text-red-500">*</span>
+                          Products manufactured (निर्मित उत्पाद){" "}
+                          <span className="text-red-500">*</span>
                         </label>
                         <input
                           type="file"
-                         
                           accept="image/*,.pdf"
                           onChange={(e) => handleFileChange(e, "productsImage")}
                           className="block w-full text-sm text-gray-500 file:mr-4 file:py-2.5 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-[#f5ebd9] file:text-[#581c24] hover:file:bg-[#e6d5bc] transition-all border border-gray-300 rounded-lg"
@@ -1425,11 +1533,11 @@ const CarpetAccelerator = () => {
 
                       <div>
                         <label className="block text-sm font-semibold text-gray-700 mb-2">
-                          Company's brochure or catalogue  <span className="text-red-500">*</span>
+                          Company's brochure or catalogue{" "}
+                          <span className="text-red-500">*</span>
                         </label>
                         <input
                           type="file"
-                         
                           accept="image/*,.pdf"
                           onChange={(e) => handleFileChange(e, "brochure")}
                           className="block w-full text-sm text-gray-500 file:mr-4 file:py-2.5 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-[#f5ebd9] file:text-[#581c24] hover:file:bg-[#e6d5bc] transition-all border border-gray-300 rounded-lg"
@@ -1438,11 +1546,11 @@ const CarpetAccelerator = () => {
 
                       <div>
                         <label className="block text-sm font-semibold text-gray-700 mb-2">
-                          Image of Social Media Page or GI Tag  /  <span className="text-red-500">*</span>
+                          Image of Social Media Page or GI Tag /{" "}
+                          <span className="text-red-500">*</span>
                         </label>
                         <input
                           type="file"
-                          
                           accept="image/*,.pdf"
                           onChange={(e) =>
                             handleFileChange(e, "socialMediaImage")
@@ -1453,11 +1561,11 @@ const CarpetAccelerator = () => {
 
                       <div>
                         <label className="block text-sm font-semibold text-gray-700 mb-2">
-                         IEC Certificate / Udyam  (यदि निर्यातक हैं)  <span className="text-red-500">*</span>
+                          IEC Certificate / Udyam (यदि निर्यातक हैं){" "}
+                          <span className="text-red-500">*</span>
                         </label>
                         <input
                           type="file"
-                          
                           accept="image/*,.pdf"
                           onChange={(e) => handleFileChange(e, "otherDocs")}
                           className="block w-full text-sm text-gray-500 file:mr-4 file:py-2.5 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-[#f5ebd9] file:text-[#581c24] hover:file:bg-[#e6d5bc] transition-all border border-gray-300 rounded-lg"
@@ -1542,124 +1650,138 @@ const CarpetAccelerator = () => {
       </section>
 
       <section id="faqs" className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Main Grid: Tabs Left + FAQs Right */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mt-10">
-          
-          {/* LEFT SIDEBAR CONTROLS */}
-          <div className="lg:col-span-4 space-y-6">
-            {/* Nav Cards */}
-            <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden p-2 space-y-1">
-              {tabs.map((tab) => {
-                const IconComponent = tab.icon;
-                const isActive = activeTab === tab.id;
-                return (
-                  <button
-                    key={tab.id}
-                    onClick={() => handleTabChange(tab.id)}
-                    className={`w-full flex items-center gap-4 px-5 py-4 rounded-xl font-bold text-left text-sm transition-all duration-300 relative ${
-                      isActive 
-                        ? 'bg-[#581c24]/5 text-[#581c24]' 
-                        : 'text-gray-600 hover:bg-gray-50'
-                    }`}
-                  >
-                    {/* Active left indicator accent bar */}
-                    {isActive && (
-                      <div className="absolute left-0 top-0 bottom-0 w-1 bg-[#581c24] rounded-r-lg" />
-                    )}
-                    
-                    {/* Dynamic Tinted Icons */}
-                    <div className={`w-9 h-9 rounded-xl flex items-center justify-center border transition-colors ${
-                      isActive 
-                        ? 'bg-[#581c24] text-white border-transparent' 
-                        : 'bg-gray-50 text-gray-500 border-gray-200'
-                    }`}>
-                      <IconComponent className="w-4 h-4" />
-                    </div>
-                    {tab.label}
-                  </button>
-                );
-              })}
-            </div>
-
-            {/* Support Widget Box */}
-            <div className="bg-[#581c24]/5 rounded-2xl p-6 border border-[#581c24]/10 text-left relative overflow-hidden">
-              <div className="absolute -right-6 -bottom-6 text-[#581c24]/5">
-                <HelpCircle className="w-32 h-32" />
-              </div>
-              <h3 className="text-lg font-extrabold text-gray-900 mb-2">Still have questions?</h3>
-              <p className="text-gray-600 text-xs md:text-sm leading-relaxed mb-6">
-                Contact us to speak with an Accelerator team member who will be happy to assist you.
-              </p>
-              
-              <div className="space-y-3 relative z-10">
-                <a href="mailto:exportcell@mpidc.co.in" className="flex items-center gap-3 text-xs md:text-sm font-bold text-[#581c24] hover:underline">
-                  <Mail className="w-4 h-4 text-[#a67c00]" /> exportcell@mpidc.co.in
-                </a>
-                <a href="tel:0755-2577145" className="flex items-center gap-3 text-xs md:text-sm font-bold text-[#581c24] hover:underline">
-                  <Phone className="w-4 h-4 text-[#a67c00]" /> 0755-2577145
-                </a>
-              </div>
-            </div>
-          </div>
-
-          {/* RIGHT SIDEBAR DYNAMIC FAQS LIST */}
-          <div className="lg:col-span-8 bg-[#fbf9f6]/40 border border-gray-100 rounded-2xl p-6 md:p-8 min-h-[480px]">
-            {/* Header Identity */}
-            <div className="flex items-center gap-3 mb-8 pb-4 border-b border-gray-100">
-              <HelpCircle className="w-6 h-6 text-[#a67c00]" />
-              <h3 className="text-xl font-extrabold text-gray-900">
-                {tabs.find(t => t.id === activeTab)?.label}
-              </h3>
-            </div>
-
-            {/* Accordion Wrapper */}
-            <div className="space-y-4">
-              {faqData[activeTab]?.map((faq, index) => {
-                const isOpen = openFaqIndex === index;
-                return (
-                  <div 
-                    key={index}
-                    className="bg-white border border-gray-100 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300"
-                  >
-                    {/* Accordion Header Button */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Main Grid: Tabs Left + FAQs Right */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mt-10">
+            {/* LEFT SIDEBAR CONTROLS */}
+            <div className="lg:col-span-4 space-y-6">
+              {/* Nav Cards */}
+              <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden p-2 space-y-1">
+                {tabs.map((tab) => {
+                  const IconComponent = tab.icon;
+                  const isActive = activeTab === tab.id;
+                  return (
                     <button
-                      onClick={() => setOpenFaqIndex(isOpen ? null : index)}
-                      className="w-full flex items-center justify-between gap-4 p-5 text-left font-bold text-gray-800 hover:text-[#581c24] transition-colors duration-200"
-                    >
-                      <div className="flex items-center gap-3.5">
-                        <span className="w-6 h-6 rounded-md bg-gray-50 border text-xs font-bold text-gray-400 flex items-center justify-center flex-shrink-0 group-hover:border-rose-200">
-                          Q
-                        </span>
-                        <span className="text-sm md:text-base tracking-tight">{faq.q}</span>
-                      </div>
-                      <ChevronDown className={`w-5 h-5 text-gray-400 flex-shrink-0 transition-transform duration-300 ${isOpen ? 'rotate-180 text-[#581c24]' : ''}`} />
-                    </button>
-
-                    {/* Accordion Smooth Body Drawer */}
-                    <div 
-                      className={`transition-all duration-300 ease-in-out overflow-hidden ${
-                        isOpen ? 'max-h-60 border-t border-gray-50' : 'max-h-0'
+                      key={tab.id}
+                      onClick={() => handleTabChange(tab.id)}
+                      className={`w-full flex items-center gap-4 px-5 py-4 rounded-xl font-bold text-left text-sm transition-all duration-300 relative ${
+                        isActive
+                          ? "bg-[#581c24]/5 text-[#581c24]"
+                          : "text-gray-600 hover:bg-gray-50"
                       }`}
                     >
-                      <div className="p-5 text-sm md:text-base text-gray-600 bg-gray-50/50 leading-relaxed text-left flex gap-3.5">
-                        <span className="w-6 h-6 rounded-md bg-rose-50 text-xs font-bold text-[#581c24] flex items-center justify-center flex-shrink-0 border border-rose-100">
-                          A
-                        </span>
-                        <p className="font-medium text-gray-600">{faq.a}</p>
+                      {/* Active left indicator accent bar */}
+                      {isActive && (
+                        <div className="absolute left-0 top-0 bottom-0 w-1 bg-[#581c24] rounded-r-lg" />
+                      )}
+
+                      {/* Dynamic Tinted Icons */}
+                      <div
+                        className={`w-9 h-9 rounded-xl flex items-center justify-center border transition-colors ${
+                          isActive
+                            ? "bg-[#581c24] text-white border-transparent"
+                            : "bg-gray-50 text-gray-500 border-gray-200"
+                        }`}
+                      >
+                        <IconComponent className="w-4 h-4" />
+                      </div>
+                      {tab.label}
+                    </button>
+                  );
+                })}
+              </div>
+
+              {/* Support Widget Box */}
+              <div className="bg-[#581c24]/5 rounded-2xl p-6 border border-[#581c24]/10 text-left relative overflow-hidden">
+                <div className="absolute -right-6 -bottom-6 text-[#581c24]/5">
+                  <HelpCircle className="w-32 h-32" />
+                </div>
+                <h3 className="text-lg font-extrabold text-gray-900 mb-2">
+                  Still have questions?
+                </h3>
+                <p className="text-gray-600 text-xs md:text-sm leading-relaxed mb-6">
+                  Contact us to speak with an Accelerator team member who will
+                  be happy to assist you.
+                </p>
+
+                <div className="space-y-3 relative z-10">
+                  <a
+                    href="mailto:exportcell@mpidc.co.in"
+                    className="flex items-center gap-3 text-xs md:text-sm font-bold text-[#581c24] hover:underline"
+                  >
+                    <Mail className="w-4 h-4 text-[#a67c00]" />{" "}
+                    exportcell@mpidc.co.in
+                  </a>
+                  <a
+                    href="tel:0755-2577145"
+                    className="flex items-center gap-3 text-xs md:text-sm font-bold text-[#581c24] hover:underline"
+                  >
+                    <Phone className="w-4 h-4 text-[#a67c00]" /> 0755-2577145
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* RIGHT SIDEBAR DYNAMIC FAQS LIST */}
+            <div className="lg:col-span-8 bg-[#fbf9f6]/40 border border-gray-100 rounded-2xl p-6 md:p-8 min-h-[480px]">
+              {/* Header Identity */}
+              <div className="flex items-center gap-3 mb-8 pb-4 border-b border-gray-100">
+                <HelpCircle className="w-6 h-6 text-[#a67c00]" />
+                <h3 className="text-xl font-extrabold text-gray-900">
+                  {tabs.find((t) => t.id === activeTab)?.label}
+                </h3>
+              </div>
+
+              {/* Accordion Wrapper */}
+              <div className="space-y-4">
+                {faqData[activeTab]?.map((faq, index) => {
+                  const isOpen = openFaqIndex === index;
+                  return (
+                    <div
+                      key={index}
+                      className="bg-white border border-gray-100 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300"
+                    >
+                      {/* Accordion Header Button */}
+                      <button
+                        onClick={() => setOpenFaqIndex(isOpen ? null : index)}
+                        className="w-full flex items-center justify-between gap-4 p-5 text-left font-bold text-gray-800 hover:text-[#581c24] transition-colors duration-200"
+                      >
+                        <div className="flex items-center gap-3.5">
+                          <span className="w-6 h-6 rounded-md bg-gray-50 border text-xs font-bold text-gray-400 flex items-center justify-center flex-shrink-0 group-hover:border-rose-200">
+                            Q
+                          </span>
+                          <span className="text-sm md:text-base tracking-tight">
+                            {faq.q}
+                          </span>
+                        </div>
+                        <ChevronDown
+                          className={`w-5 h-5 text-gray-400 flex-shrink-0 transition-transform duration-300 ${isOpen ? "rotate-180 text-[#581c24]" : ""}`}
+                        />
+                      </button>
+
+                      {/* Accordion Smooth Body Drawer */}
+                      <div
+                        className={`transition-all duration-300 ease-in-out overflow-hidden ${
+                          isOpen
+                            ? "max-h-60 border-t border-gray-50"
+                            : "max-h-0"
+                        }`}
+                      >
+                        <div className="p-5 text-sm md:text-base text-gray-600 bg-gray-50/50 leading-relaxed text-left flex gap-3.5">
+                          <span className="w-6 h-6 rounded-md bg-rose-50 text-xs font-bold text-[#581c24] flex items-center justify-center flex-shrink-0 border border-rose-100">
+                            A
+                          </span>
+                          <p className="font-medium text-gray-600">{faq.a}</p>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                );
-              })}
+                  );
+                })}
+              </div>
             </div>
           </div>
-
         </div>
-
-      </div>
-    </section>
+      </section>
 
       {/* 11. Contact Section */}
       <section className="py-20 bg-[#fbf9f6]">
@@ -1816,7 +1938,6 @@ const CarpetAccelerator = () => {
                 Empowering carpet makers to move from local looms to global
                 rooms.
               </p>
-              
             </div>
 
             <div>
