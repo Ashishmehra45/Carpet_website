@@ -595,7 +595,7 @@ const CarpetAccelerator = () => {
             {[
               {
                 label: "Applications Start",
-                value: "Coming Soon",
+                value: "8 July 2026",
                 icon: <Star className="w-5 h-5 text-[#f5ebd9]" />,
               },
               {
