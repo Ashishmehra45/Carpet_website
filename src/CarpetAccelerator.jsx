@@ -184,8 +184,8 @@ const CarpetAccelerator = () => {
   const faqData = {
     about: [
       {
-        q: "What is the Carpet Accelerator?",
-        a: "The Carpet Accelerator is a flagship growth initiative designed to scale traditional weavers, master artisans, and carpet manufacturers into global brands through design innovation, digital onboarding, and export handholding.",
+        q: "What is the Gwalior Carpet Accelerator?",
+        a: "The Gwalior Carpet Accelerator is a flagship growth initiative designed to scale traditional weavers, master artisans, and carpet manufacturers into global brands through design innovation, digital onboarding, and export handholding.",
       },
       {
         q: 'What does "From Local Weaves to Global Markets" mean?',
@@ -423,7 +423,7 @@ const CarpetAccelerator = () => {
               <div className="flex flex-col">
                 <h1 className="text-2xl font-bold text-gray-900 tracking-tight leading-none">
                   <a href="#Home">
-                    Carpet <span className="text-[#a67c00]">Accelerator</span>
+                   Gwalior Carpet <span className="text-[#a67c00]">Accelerator</span>
                   </a>
                 </h1>
               </div>
@@ -565,7 +565,7 @@ const CarpetAccelerator = () => {
             Initiative of MP Industrial Development Corporation
           </span>
           <h1 className="text-5xl md:text-7xl font-extrabold text-white tracking-tight mb-4 drop-shadow-xl">
-            Carpet Accelerator
+            Gwalior Carpet Accelerator
           </h1>
           <h2 className="text-2xl md:text-3xl font-medium text-[#f5ebd9] mb-8 tracking-wide uppercase drop-shadow-lg">
             From Royal Courts To Global Homes
@@ -656,7 +656,7 @@ const CarpetAccelerator = () => {
               <p className="text-lg text-gray-700 leading-relaxed">
                 The{" "}
                 <span className="font-bold text-[#581c24]">
-                  Carpet Accelerator
+                  Gwalior Carpet Accelerator
                 </span>{" "}
                 is a focused growth program designed to support carpet artisans,
                 weavers, manufacturers, exporters, and emerging entrepreneurs.
@@ -2041,7 +2041,7 @@ const CarpetAccelerator = () => {
 
           <div className="pt-8 border-t border-white/10 text-center flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-gray-500 text-sm">
-              © 2026 Carpet Accelerator. All rights reserved.
+              © 2026 Gwalior Carpet Accelerator. All rights reserved.
             </p>
             <div className="flex gap-4 text-sm text-gray-500">
               <span className="hover:text-white cursor-pointer transition-colors">
