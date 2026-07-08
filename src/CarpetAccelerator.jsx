@@ -1828,7 +1828,7 @@ const CarpetAccelerator = () => {
                   <div>
                     <h4 className="font-bold text-gray-800">Email</h4>
                     <p className="text-gray-600 mt-1">
-                      Export.investment@mpidc.co.in
+                      export.investment@mpidc.co.in
                     </p>
                   </div>
                 </div>
